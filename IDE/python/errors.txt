@@ -1,0 +1,2 @@
+error:'"'(linea:1, columna: 7)
+error:'"'(linea:1, columna: 35)

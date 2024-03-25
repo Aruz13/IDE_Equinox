@@ -1,0 +1,237 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfok3u6m8kmt2"]
+
+[ext_resource type="Script" path="res://control2.gd" id="1_l3lw0"]
+[ext_resource type="Texture2D" uid="uid://h1k01yg23b1p" path="res://images/new.png" id="2_fva7d"]
+[ext_resource type="Texture2D" uid="uid://doshatulrtnl" path="res://images/file.png" id="2_ou2xn"]
+[ext_resource type="Texture2D" uid="uid://co5u3iphxbafc" path="res://images/open.png" id="3_68ixo"]
+[ext_resource type="Texture2D" uid="uid://cpxhxq8j60ret" path="res://images/save.png" id="4_fb5mn"]
+[ext_resource type="Texture2D" uid="uid://bsnhy4ld1t8c0" path="res://images/close.png" id="5_3omg0"]
+[ext_resource type="Texture2D" uid="uid://dlc844hrj6bda" path="res://images/play.png" id="6_insyo"]
+[ext_resource type="CodeHighlighter" uid="uid://b083jk2bygk33" path="res://CodeHighPastel.tres" id="8_0jasp"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l3lw0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 1827.0
+offset_bottom = 968.0
+
+[node name="HBoxContainer" type="HFlowContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Archivo"
+icon = ExtResource("2_ou2xn")
+flat = false
+icon_alignment = 2
+expand_icon = true
+switch_on_hover = true
+item_count = 4
+popup/item_0/text = "Nuevo Archivo"
+popup/item_0/id = 0
+popup/item_1/text = "Abrir Archivo"
+popup/item_1/id = 1
+popup/item_2/text = "Guardar Archivo"
+popup/item_2/id = 2
+popup/item_3/text = "Guardar Archivo Como"
+popup/item_3/id = 3
+
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Nuevo
+"
+icon = ExtResource("2_fva7d")
+expand_icon = true
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Abrir"
+icon = ExtResource("3_68ixo")
+expand_icon = true
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Guardar
+"
+icon = ExtResource("4_fb5mn")
+expand_icon = true
+
+[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cerrar"
+icon = ExtResource("5_3omg0")
+expand_icon = true
+
+[node name="Button5" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ejecutar"
+icon = ExtResource("6_insyo")
+expand_icon = true
+
+[node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Lexico"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CodeEdit" type="CodeEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
+layout_direction = 0
+layout_mode = 2
+size_flags_horizontal = 3
+text = "print(\"Hola mundo\")
+"
+placeholder_text = "print(\"Hello World\")"
+minimap_draw = true
+syntax_highlighter = ExtResource("8_0jasp")
+highlight_all_occurrences = true
+draw_tabs = true
+gutters_draw_breakpoints_gutter = true
+gutters_draw_bookmarks = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+auto_brace_completion_pairs = {
+"\"": "\"",
+"'": "'",
+"(": ")",
+"<": ">",
+"[": "]",
+"{": "}"
+}
+
+[node name="TabContainer2" type="TabContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Lexico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+layout_mode = 2
+text = "1"
+editable = false
+
+[node name="Sintactico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+visible = false
+layout_mode = 2
+text = "2"
+editable = false
+
+[node name="Semantico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+visible = false
+layout_mode = 2
+text = "3"
+editable = false
+
+[node name="Hash Table" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+visible = false
+layout_mode = 2
+text = "4"
+editable = false
+
+[node name="Codigo intermedio" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+visible = false
+layout_mode = 2
+text = "4"
+editable = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 3
+
+[node name="Errores Lexicos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+visible = false
+layout_mode = 2
+text = "1"
+editable = false
+
+[node name="Errores Sintacticos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+visible = false
+layout_mode = 2
+text = "2"
+editable = false
+
+[node name="Errores Semanticos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+visible = false
+layout_mode = 2
+text = "3"
+editable = false
+
+[node name="Resultados" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+layout_mode = 2
+text = "4"
+editable = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+tooltip_text = "Ubicacion del cursor."
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Ln 1, Col 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Esta seguro?"
+initial_position = 1
+size = Vector2i(565, 132)
+always_on_top = true
+popup_window = true
+dialog_text = "Parece que algun dato no se ha guardado.
+Si continua podrian perderse datos del actual archivo. 
+Desea continuar?"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="text_changed" from="VBoxContainer/VSplitContainer/HSplitContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
