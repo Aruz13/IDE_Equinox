@@ -226,6 +226,22 @@ dialog_text = "Parece que algun dato no se ha guardado.
 Si continua podrian perderse datos del actual archivo. 
 Desea continuar?"
 
+[node name="AcceptDialogPython" type="AcceptDialog" parent="."]
+title = "Python No Encontrado."
+initial_position = 2
+size = Vector2i(820, 260)
+popup_window = true
+min_size = Vector2i(820, 260)
+max_size = Vector2i(1280, 720)
+dialog_text = "Parece que hay un problema. Este Compilador necesita de Python para funcionar.
+Instala Python desde la Microsoft Store.
+También puedes probar pulsando de nuevo en ejecutar para abrir una ventana en
+la que indiques la ubicación del archivo \"python.exe\". (También puedes hacerlo desde la configuración)
+
+Este suele ubicarse en \"C:\\Users\\$USER\\AppData\\Local\\Programs\\Python\\Python311\\python.exe\""
+dialog_close_on_escape = false
+dialog_autowrap = true
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]

@@ -18,6 +18,7 @@ var seleccion = false
 @onready var countLnCol = $VBoxContainer/HBoxContainer2/Label
 @onready var lex = $VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Lexico
 @onready var errLex = $"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Lexicos"
+@onready var errPyt = $AcceptDialogPython
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(OS.get_name())
@@ -84,10 +85,13 @@ func ejecutar_Python():
 	if output[output.size()-1].contains(aux) and !seleccion:
 		OS.execute("python.exe",[""])
 		seleccion = true
+		errPyt.popup_centered()
 	elif seleccion:
 		file_dialog.file_mode = 0
 		file_dialog.title = "Selecciona Python"
 		file_dialog.popup_centered()
+		if file_dialog.current_file.contains("python.exe"):
+			pythonRuta = file_dialog.current_file
 		seleccion = false
 
 # Guardar
