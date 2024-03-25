@@ -18,7 +18,6 @@ var seleccion = false
 @onready var countLnCol = $VBoxContainer/HBoxContainer2/Label
 @onready var lex = $VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Lexico
 @onready var errLex = $"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Lexicos"
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(OS.get_name())
@@ -89,7 +88,6 @@ func ejecutar_Python():
 		file_dialog.file_mode = 0
 		file_dialog.title = "Selecciona Python"
 		file_dialog.popup_centered()
-		pythonRuta = file_dialog.current_file
 		seleccion = false
 
 # Guardar
