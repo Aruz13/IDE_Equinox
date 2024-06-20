@@ -1,0 +1,124 @@
+ main 		 ~~~ palabra reservada ~~~ 
+ {		  ~~~ simbolo especial ~~~
+ if 		 ~~~ palabra reservada ~~~ 
+ (		  ~~~ simbolo especial ~~~
+ 2		 ~~~ entero ~~~ 
+ >		 ~~~ operador relacional ~~~
+ 3		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ {		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ a 		 ~~~ identificador ~~~
+ + 		 ~~~ operador aritmetico ~~~
+ 3		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~
+ else 		 ~~~ palabra reservada ~~~ 
+ {		  ~~~ simbolo especial ~~~
+ if 		 ~~~ palabra reservada ~~~ 
+ (		  ~~~ simbolo especial ~~~
+ 4		 ~~~ entero ~~~ 
+ >		 ~~~ operador relacional ~~~
+ 2		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ {		  ~~~ simbolo especial ~~~
+ b 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 3.2		 ~~~ flotante ~~~
+ ;		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~
+ else 		 ~~~ palabra reservada ~~~ 
+ {		  ~~~ simbolo especial ~~~
+ b 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 5.0		 ~~~ flotante ~~~
+ ;		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~
+ end 		 ~~~ palabra reservada ~~~ 
+ y 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ y 		 ~~~ identificador ~~~
+ + 		 ~~~ operador aritmetico ~~~
+ 1		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~
+ end 		 ~~~ palabra reservada ~~~ 
+ a 		 ~~~ identificador ~~~
+ ++		 ~~~ operador doble ~~~
+ ;		  ~~~ simbolo especial ~~~
+ c 		 ~~~ identificador ~~~
+ --		 ~~~ operador doble ~~~
+ ;		  ~~~ simbolo especial ~~~
+ x 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 3		 ~~~ entero ~~~ 
+ + 		 ~~~ operador aritmetico ~~~
+ 4		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ do 		 ~~~ palabra reservada ~~~ 
+ {		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ (		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ + 		 ~~~ operador aritmetico ~~~
+ 1		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ * 		 ~~~ operador aritmetico ~~~
+ 2		 ~~~ entero ~~~ 
+ + 		 ~~~ operador aritmetico ~~~
+ 1		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ while 		 ~~~ palabra reservada ~~~ 
+ (		  ~~~ simbolo especial ~~~
+ x 		 ~~~ identificador ~~~
+ >		 ~~~ operador relacional ~~~
+ 7		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ {		  ~~~ simbolo especial ~~~
+ x 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 6		 ~~~ entero ~~~ 
+ + 		 ~~~ operador aritmetico ~~~
+ 8		 ~~~ entero ~~~ 
+ / 		 ~~~ operador aritmetico ~~~
+ 9		 ~~~ entero ~~~ 
+ * 		 ~~~ operador aritmetico ~~~
+ 8		 ~~~ entero ~~~ 
+ / 		 ~~~ operador aritmetico ~~~
+ 3		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ cin 		 ~~~ palabra reservada ~~~ 
+ x 		 ~~~ identificador ~~~
+ ;		  ~~~ simbolo especial ~~~
+ mas 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 36		 ~~~ entero ~~~ 
+ / 		 ~~~ operador aritmetico ~~~
+ 7		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~
+ while 		 ~~~ palabra reservada ~~~ 
+ (		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ ==		 ~~~ operador relacional ~~~
+ 5		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ ;		  ~~~ simbolo especial ~~~
+ while 		 ~~~ palabra reservada ~~~ 
+ (		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ ==		 ~~~ operador relacional ~~~
+ 0		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ {		  ~~~ simbolo especial ~~~
+ cin 		 ~~~ palabra reservada ~~~ 
+ mas 		 ~~~ identificador ~~~
+ ;		  ~~~ simbolo especial ~~~
+ cout 		 ~~~ palabra reservada ~~~ 
+ x 		 ~~~ identificador ~~~
+ ;		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~
+ }		  ~~~ simbolo especial ~~~

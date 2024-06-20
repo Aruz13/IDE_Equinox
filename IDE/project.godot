@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="IDE"
+config/tags=PackedStringArray("compilador", "uni")
 run/main_scene="res://control2.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0.12549, 0.121569, 1)
+boot_splash/image="res://images/logo.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://images/logo.png"
+boot_splash/minimum_display_time=1000
+
+[autoload]
+
+Global="*res://GLOBAL.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfok3u6m8kmt2"]
+[gd_scene load_steps=10 format=3 uid="uid://cfok3u6m8kmt2"]
 
 [ext_resource type="Script" path="res://control2.gd" id="1_l3lw0"]
 [ext_resource type="Texture2D" uid="uid://h1k01yg23b1p" path="res://images/new.png" id="2_fva7d"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cpxhxq8j60ret" path="res://images/save.png" id="4_fb5mn"]
 [ext_resource type="Texture2D" uid="uid://bsnhy4ld1t8c0" path="res://images/close.png" id="5_3omg0"]
 [ext_resource type="Texture2D" uid="uid://dlc844hrj6bda" path="res://images/play.png" id="6_insyo"]
-[ext_resource type="CodeHighlighter" uid="uid://b083jk2bygk33" path="res://CodeHighPastel.tres" id="8_0jasp"]
+[ext_resource type="CodeHighlighter" uid="uid://b083jk2bygk33" path="res://CodeHighPastel.tres" id="8_64crh"]
+
+[sub_resource type="Theme" id="Theme_omhid"]
+CodeEdit/colors/word_highlighted_color = Color(0.784314, 0.270588, 1, 0.658824)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -94,9 +97,12 @@ icon = ExtResource("6_insyo")
 expand_icon = true
 
 [node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 text = "Lexico"
+
+[node name="Button7" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Sintaxis"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -110,12 +116,52 @@ size_flags_vertical = 3
 layout_direction = 0
 layout_mode = 2
 size_flags_horizontal = 3
-text = "print(\"Hola mundo\")
-"
+theme = SubResource("Theme_omhid")
+text = "main {
+	int x,y,z;
+	float a,b,c;
+	suma=45;
+	x=32.32;
+	x=23;
+	y=2+3-1;
+	z=y+7;
+	y=y+1;
+	a=24.0+4-1/3*2+34-1;
+	x=(5-3)*(8/2);
+	y=5+3-2*4/7-9;
+	z=8/2+15*4;
+	y=14.54;
+	if(2>3){
+		y=a+3;
+	}else{
+		if(4>2){
+			b=3.2;
+		}else{
+			b=5.0;
+		}end
+		y=y+1;
+	}end
+	a++;
+	c--;
+	x=3+4;
+	do{
+		y=(y+1)*2+1;
+		while(x>7){
+			x=6+8/9*8/3;   
+			cin x; 
+			mas=36/7; 
+		}
+	}while(y==5);
+	while(y==0){
+		cin mas;
+		cout x;
+	}
+}"
 placeholder_text = "print(\"Hello World\")"
 minimap_draw = true
-syntax_highlighter = ExtResource("8_0jasp")
+syntax_highlighter = ExtResource("8_64crh")
 highlight_all_occurrences = true
+highlight_current_line = true
 draw_tabs = true
 gutters_draw_breakpoints_gutter = true
 gutters_draw_bookmarks = true
@@ -139,17 +185,27 @@ auto_brace_completion_pairs = {
 [node name="TabContainer2" type="TabContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+current_tab = 1
 
 [node name="Lexico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+visible = false
 layout_mode = 2
 text = "1"
 editable = false
 
-[node name="Sintactico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
-visible = false
+[node name="Sintactico" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 layout_mode = 2
-text = "2"
+
+[node name="Sintactico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "HOLA"
 editable = false
+
+[node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
 
 [node name="Semantico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 visible = false
@@ -176,12 +232,10 @@ size_flags_vertical = 3
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 3
 
 [node name="Errores Lexicos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
-visible = false
 layout_mode = 2
-text = "1"
+theme_override_colors/font_readonly_color = Color(0.937255, 0, 0, 1)
 editable = false
 
 [node name="Errores Sintacticos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
@@ -197,6 +251,7 @@ text = "3"
 editable = false
 
 [node name="Resultados" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+visible = false
 layout_mode = 2
 text = "4"
 editable = false
@@ -248,6 +303,7 @@ dialog_autowrap = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button7" to="." method="_on_button_7_pressed"]
 [connection signal="text_changed" from="VBoxContainer/VSplitContainer/HSplitContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]
 [connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

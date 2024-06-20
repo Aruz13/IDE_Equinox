@@ -28,7 +28,6 @@ palabras_reservadas = {
     "until": "palabra reservada",
     "cin": "palabra reservada",
     "cout": "palabra reservada",
-    "real": "palabra reservada",
     "int": "palabra reservada",
     "boolean": "palabra reservada",
     "true": "palabra reservada",
@@ -49,6 +48,7 @@ operadores_aritmeticos = {
     "*": "MULTIPLICACION",
     "/": "DIVISION",
     "=": "IGUALACION",
+    "%": "PORCENTAJE",
 }
 operadores_relacionales = {
     "==": "IGUALDAD",
@@ -100,9 +100,9 @@ while i < len(contenidodecodigo):
             j += 1
         token = contenidodecodigo[i:j]
         if token in palabras_reservadas:
-            tokens.append(" " + token + "  ### " + palabras_reservadas[token] + " ### ")
+            tokens.append(" " + token + " \t\t ~~~ " + palabras_reservadas[token] + " ~~~ ")
         else:
-            tokens.append(" " + token + "  ### identificador ###")
+            tokens.append(" " + token + " \t\t ~~~ identificador ~~~")
         col += j - i
         i = j
         continue
@@ -112,39 +112,59 @@ while i < len(contenidodecodigo):
             j += 1
         if j < len(contenidodecodigo) and contenidodecodigo[j] == ".":
             j += 1
-            while j < len(contenidodecodigo) and contenidodecodigo[j].isdigit():
-                j += 1
-            tokens.append(" " + contenidodecodigo[i:j] + " ### flotante ### ")
+            if(j < len(contenidodecodigo) and contenidodecodigo[j].isdigit()):
+                while j < len(contenidodecodigo) and contenidodecodigo[j].isdigit():
+                    j += 1
+                tokens.append(" " + contenidodecodigo[i:j] + "\t\t ~~~ flotante ~~~")
+            else:
+                errors.append(
+                    "error:'"
+                    + contenidodecodigo[i:j]
+                    + "'(linea:"
+                    + str(linea)
+                    + ", columna: "
+                    + str(col)
+                    + ")"
+                )
         else:
-            tokens.append(" " + contenidodecodigo[i:j] + " ### entero ### ")
+            tokens.append(" " + contenidodecodigo[i:j] + "\t\t ~~~ entero ~~~ ")
         col += j - i
         i = j
         continue
     # Identificar símbolos especiales
     if contenidodecodigo[i] in simbolos_especiales:
-        tokens.append(" " + contenidodecodigo[i] + "  ### simbolo especial ###")
+        tokens.append(" " + contenidodecodigo[i] + "\t\t  ~~~ simbolo especial ~~~")
         i += 1
         col += 1
         continue
     # Identificar operadores aritméticos y relacionales
     if contenidodecodigo[i : i + 2] in operadores_relacionales:
-        tokens.append(" " + contenidodecodigo[i : i + 2] + " ### operador relacional ###")
+        tokens.append(" " + contenidodecodigo[i : i + 2] + "\t\t ~~~ operador relacional ~~~")
         i += 2
         col += 2
         continue
     elif contenidodecodigo[i] in operadores_relacionales:
-        tokens.append(" " + contenidodecodigo[i] + " ### operador relacional ###")
+        tokens.append(" " + contenidodecodigo[i] + "\t\t ~~~ operador relacional ~~~")
         i += 1
         continue
     if contenidodecodigo[i : i + 2] in operadores_dobles:
-        tokens.append(" " + contenidodecodigo[i : i + 2] + " ### operador doble ###")
+        tokens.append(" " + contenidodecodigo[i : i + 2] + "\t\t ~~~ operador doble ~~~")
         i += 2
         col += 1
         continue
     elif contenidodecodigo[i] in operadores_aritmeticos:
-        tokens.append(" " + contenidodecodigo[i] + "  ### operador aritmetico ###")
+        tokens.append(" " + contenidodecodigo[i] + " \t\t ~~~ operador aritmetico ~~~")
         i += 1
         col += 1
+        continue
+    elif contenidodecodigo[i : i + 2] in operadores_logicos:
+        tokens.append(" " + contenidodecodigo[i : i + 2] + "\t\t ~~~ operador logicos ~~~")
+        i += 2
+        col += 2
+        continue
+    elif contenidodecodigo[i] in operadores_logicos:
+        tokens.append(" " + contenidodecodigo[i] + "\t\t ~~~ operador logicos ~~~")
+        i += 1
         continue
     else:
         errors.append(
@@ -160,13 +180,14 @@ while i < len(contenidodecodigo):
         col += 1
         continue
 # Ingresa lo tokens a txt
-f = open("python/lexico.txt", "w")
+f = open("lexico.txt", "w")
 for item in tokens:
     print(item)
     f.write(item + "\n")
 f.close()
+print("#?#?#?#?#?#?#?#?#?#?#")
 # Ingresa los errores a un txt
-f = open("python/errors.txt", "w")
+f = open("errors.txt", "w")
 for error in errors:
     print(error)
     f.write(error + "\n")
