@@ -1,5 +1,96 @@
  main 		 ~~~ palabra reservada ~~~ 
  {		  ~~~ simbolo especial ~~~
+ a 		 ~~~ identificador ~~~
+ suma 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 45		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ x 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 32.32		 ~~~ flotante ~~~
+ ;		  ~~~ simbolo especial ~~~
+ x 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 23		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 2		 ~~~ entero ~~~ 
+ + 		 ~~~ operador aritmetico ~~~
+ 3		 ~~~ entero ~~~ 
+ - 		 ~~~ operador aritmetico ~~~
+ 1		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ z 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ y 		 ~~~ identificador ~~~
+ + 		 ~~~ operador aritmetico ~~~
+ 7		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ y 		 ~~~ identificador ~~~
+ + 		 ~~~ operador aritmetico ~~~
+ 1		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ a 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 24.0		 ~~~ flotante ~~~
+ + 		 ~~~ operador aritmetico ~~~
+ 4		 ~~~ entero ~~~ 
+ - 		 ~~~ operador aritmetico ~~~
+ 1		 ~~~ entero ~~~ 
+ / 		 ~~~ operador aritmetico ~~~
+ 3		 ~~~ entero ~~~ 
+ * 		 ~~~ operador aritmetico ~~~
+ 2		 ~~~ entero ~~~ 
+ + 		 ~~~ operador aritmetico ~~~
+ 34		 ~~~ entero ~~~ 
+ - 		 ~~~ operador aritmetico ~~~
+ 1		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ x 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ (		  ~~~ simbolo especial ~~~
+ 5		 ~~~ entero ~~~ 
+ - 		 ~~~ operador aritmetico ~~~
+ 3		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ * 		 ~~~ operador aritmetico ~~~
+ (		  ~~~ simbolo especial ~~~
+ 8		 ~~~ entero ~~~ 
+ / 		 ~~~ operador aritmetico ~~~
+ 2		 ~~~ entero ~~~ 
+ )		  ~~~ simbolo especial ~~~
+ ;		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 5		 ~~~ entero ~~~ 
+ + 		 ~~~ operador aritmetico ~~~
+ 3		 ~~~ entero ~~~ 
+ - 		 ~~~ operador aritmetico ~~~
+ 2		 ~~~ entero ~~~ 
+ * 		 ~~~ operador aritmetico ~~~
+ 4		 ~~~ entero ~~~ 
+ / 		 ~~~ operador aritmetico ~~~
+ 7		 ~~~ entero ~~~ 
+ - 		 ~~~ operador aritmetico ~~~
+ 9		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ z 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 8		 ~~~ entero ~~~ 
+ / 		 ~~~ operador aritmetico ~~~
+ 2		 ~~~ entero ~~~ 
+ + 		 ~~~ operador aritmetico ~~~
+ 15		 ~~~ entero ~~~ 
+ * 		 ~~~ operador aritmetico ~~~
+ 4		 ~~~ entero ~~~ 
+ ;		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ = 		 ~~~ operador aritmetico ~~~
+ 14.54		 ~~~ flotante ~~~
+ ;		  ~~~ simbolo especial ~~~
  if 		 ~~~ palabra reservada ~~~ 
  (		  ~~~ simbolo especial ~~~
  2		 ~~~ entero ~~~ 
