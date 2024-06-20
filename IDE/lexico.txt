@@ -1,6 +1,19 @@
  main 		 ~~~ palabra reservada ~~~ 
  {		  ~~~ simbolo especial ~~~
+ int 		 ~~~ palabra reservada ~~~ 
+ x 		 ~~~ identificador ~~~
+ ,		  ~~~ simbolo especial ~~~
+ y 		 ~~~ identificador ~~~
+ ,		  ~~~ simbolo especial ~~~
+ z 		 ~~~ identificador ~~~
+ ;		  ~~~ simbolo especial ~~~
+ float 		 ~~~ palabra reservada ~~~ 
  a 		 ~~~ identificador ~~~
+ ,		  ~~~ simbolo especial ~~~
+ b 		 ~~~ identificador ~~~
+ ,		  ~~~ simbolo especial ~~~
+ c 		 ~~~ identificador ~~~
+ ;		  ~~~ simbolo especial ~~~
  suma 		 ~~~ identificador ~~~
  = 		 ~~~ operador aritmetico ~~~
  45		 ~~~ entero ~~~ 
@@ -97,7 +110,6 @@
  >		 ~~~ operador relacional ~~~
  3		 ~~~ entero ~~~ 
  )		  ~~~ simbolo especial ~~~
- {		  ~~~ simbolo especial ~~~
  y 		 ~~~ identificador ~~~
  = 		 ~~~ operador aritmetico ~~~
  a 		 ~~~ identificador ~~~

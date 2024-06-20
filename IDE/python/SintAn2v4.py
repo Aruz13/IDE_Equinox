@@ -32,7 +32,7 @@ class Parser:
 
     def advance(self):
         self.token_index += 1
-        #print(self.token_index)
+        print(self.token_index)
         if self.token_index < len(self.tokens):
             self.current_token = self.tokens[self.token_index]
         else:
@@ -70,19 +70,19 @@ class Parser:
                 else:
                     root = Node("Error")
                     error_token = self.current_token.value if self.current_token else None
-                    self.errors.append(f"Programa invalido: {error_token}")
+                    self.errors.append(f"1 - Programa invalido: {error_token}")
                     self.advance()
         else:
             root = Node("Error")
             error_token = self.current_token.value if self.current_token else None
-            self.errors.append(f"Programa invalido: {error_token}")
+            self.errors.append(f"2 - Programa invalido: {error_token}")
             self.advance()
         return root
     
 
     def stmts(self):
         root = Node("Declaraciones")
-        if self.current_token and self.current_token.token_type in ["int", "float", "id", "if", "while", "cin", "cout"]:
+        if self.current_token and self.current_token.token_type in ["int", "float", "id", "if", "{", "while", "cin", "cout"]:
             root.add_child(self.stmt())
         while self.current_token and self.current_token.token_type != "}":
             if self.current_token.token_type == "do":
@@ -95,7 +95,7 @@ class Parser:
 
     def stmts2(self):
         root = Node("Sentencias")
-        if self.current_token and self.current_token.token_type in ["int", "float", "id", "if", "while", "cin", "cout"]:
+        if self.current_token and self.current_token.token_type in ["int", "float", "id", "if", "{", "while", "cin", "cout"]:
             root.add_child(self.stmt())
         while self.current_token and self.current_token.token_type != "}":
             if self.current_token.token_type == "do":
