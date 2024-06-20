@@ -68,6 +68,19 @@ class Parser:
         return root
 
 
+
+    def stmts2(self):
+        root = Node("Sentencias")
+        if self.current_token and self.current_token.token_type in ["int", "float", "id", "if", "while", "cin", "cout"]:
+            root.add_child(self.stmt())
+        while self.current_token and self.current_token.token_type != "}":
+            if self.current_token.token_type == "do":
+                root.add_child(self.do_while_stmt())
+            else:
+                root.add_child(self.stmt())
+        return root
+
+
   
     def do_while_stmt(self):
         root = Node("SentenciaDoWhile")
@@ -168,7 +181,7 @@ class Parser:
         elif self.current_token and self.current_token.token_type == "{":
             root = Node("Bloque")
             self.match("{")
-            root.add_child(self.stmts())
+            root.add_child(self.stmts2())
             self.match("}")
         elif self.current_token and self.current_token.token_type == "cin":
             root = Node("Entrada")
