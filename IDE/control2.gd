@@ -23,10 +23,16 @@ var seleccion = false
 @onready var sin = $VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico/Sintactico
 @onready var errSin = $"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Sintacticos"
 @onready var tree = $VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico/Tree
+@onready var fontSi = $VBoxContainer/HBoxContainer2/HBoxContainer/SpinBox
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(OS.get_name())
 	print(OS.get_distribution_name())
+	
+	fontSi.value = code.get_theme_font_size("font_size")
+	
 	
 	file_dialog = FileDialog.new()
 	add_child(file_dialog)
@@ -72,6 +78,8 @@ func _process(delta):
 	size = get_viewport().size
 	$VBoxContainer.size = size
 	countLnCol.text = str("Ln ",(code.get_caret_line()+1),", Col ",(code.get_caret_column()+1))
+	if Input.is_action_just_pressed("compilar"):
+		_on_button_5_pressed()
 
 func _on_button_5_pressed():
 	_on_button_7_pressed()
@@ -245,16 +253,15 @@ func _on_button_7_pressed():
 			
 			# Dividir el string en líneas
 			var lines = output[output.size()-1].split("\n")
-			sin.text = lines[0]
+			for line in lines:
+				if line.contains("Arbol"):
+					sin.text = line
 			tree.clear()
 			$"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Sintacticos".text = ""
-			$"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Sintacticos".text += output[output.size()-1] + '\n'
-			if lines[0].contains("Errores"):
-				
-				$"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Sintacticos".text += output[output.size()-1] + '\n'
-				#$"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Sintacticos".text += lines[1] + '\n'
-				#$"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Sintacticos".text += lines[2] + '\n'
-				$VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer.current_tab = 1
+			for line in lines:
+				if !line.contains("==>") and !line.contains("Arbol"):
+					$"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Errores Sintacticos".text += line + '\n'
+					$VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer.current_tab = 1
 			
 			
 			var root 
@@ -295,5 +302,12 @@ func _on_button_7_pressed():
 					#print("\n")
 					current_item.set_text(0, auxline[1])
 					if auxline[1].contains("Error"):
+						current_item.set_collapsed(true)
 						current_item.set_custom_bg_color(0, Color(1,0,0,.75), true)
+						current_item.set_custom_font_size(0, 20)
 					previous_level = level
+
+func _on_spin_box_value_changed(value):
+	#print("cambia")
+	#code.font_size = 15
+	pass

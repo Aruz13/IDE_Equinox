@@ -38,8 +38,8 @@ func guardarRutaPython():
 
 
 func crearArchivosPy():
-	var file = FileAccess.open("res://python/AnalizadorLexico.py", FileAccess.READ)
-	var file1 = FileAccess.open("res://python/SintAn2v4.py", FileAccess.READ)
+	var file = FileAccess.open("res://python/AnalizadorLexico2.py", FileAccess.READ)
+	var file1 = FileAccess.open("res://python/SintAn2v5.py", FileAccess.READ)
 	if file:
 		print("Encuentra el archivo")
 		var AnalizadorLexico = file.get_as_text()

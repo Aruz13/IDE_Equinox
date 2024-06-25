@@ -1,5 +1,5 @@
 main {
-	if(2>3){
+	if(2==3+){
 		y=a+3;
 	}else{
 		if(4>2){
@@ -19,8 +19,8 @@ main {
 			cin x; 
 			mas=36/7; 
 		}
-	}until(y==5);
-	while(y==0)
+	}until(y=5+);
+	while(y==0+){
 		cin mas;
 		cout x;
 	}

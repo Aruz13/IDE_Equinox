@@ -6,11 +6,13 @@ if len(sys.argv) != 2:
     print("Uso: python programa.py <ruta_del_archivo_lexico>")
 
 lexico_file = sys.argv[1]
+auxCont = 0
 
 class Token:
-    def __init__(self, token_type, value):
+    def __init__(self, token_type, value, line):
         self.token_type = token_type
         self.value = value
+        self.line = line
 
 
 class Node:
@@ -32,7 +34,7 @@ class Parser:
 
     def advance(self):
         self.token_index += 1
-        print(self.token_index,"  -  ")
+        # print(self.token_index,"  -  ")
         if self.token_index < len(self.tokens):
             self.current_token = self.tokens[self.token_index]
         else:
@@ -41,7 +43,7 @@ class Parser:
     
     def advance2(self, token_type):
         self.token_index += 1
-        print(self.token_index,"  -  ", self.current_token.token_type)
+        # print(self.token_index,"  -  ", self.current_token.token_type)
         if self.token_index < len(self.tokens):
             self.current_token = self.tokens[self.token_index]
         else:
@@ -53,18 +55,37 @@ class Parser:
         else:
             expected_token = token_type if token_type else "end of input"
             found_token = self.current_token.token_type if self.current_token else "end of input"
-            self.errors.append(f"Expected {expected_token}, found {found_token}")
+            line_token = self.current_token.line if self.current_token else "'last'"
+            self.errors.append(f"Expected '{expected_token}', found '{found_token}', linea {line_token}")
             self.panic_mode()
             return
 
     def panic_mode(self):
-        sync_tokens = {"main", "{", "}", "integer", "double", "if", "else", "while", "do", "cin", "cout", "end", ";"}
+        sync_tokens = {"{", "}", "int", "float", "if", "else", "while", "do", "cin", "cout", "end", ";"}
         while self.current_token and self.current_token.token_type not in sync_tokens:
-            print("Saltado: ",self.current_token.token_type)
+            #print("Saltado: ",self.current_token.token_type)
             self.advance2(self)
         if self.current_token:
-            print("Encontrado: ",self.current_token.token_type)
+            #print("Encontrado: ",self.current_token.token_type)
             if self.current_token and self.current_token.token_type == ";":
+                self.advance2(self)
+            
+    def panic_mode3(self):
+        sync_tokens = {"{", "}", "int", "float", "if", "while", "do", "cin", "cout", ";"}
+        while self.current_token and self.current_token.token_type not in sync_tokens:
+            #print("Saltado: ",self.current_token.token_type)
+            self.advance2(self)
+        if self.current_token:
+            #print("Encontrado: ",self.current_token.token_type)
+            if self.current_token and self.current_token.token_type == ";":
+                self.advance2(self)
+
+    def panic_mode2(self, tokenEs):
+        
+        while self.current_token and self.current_token.token_type != tokenEs:
+            #print("Saltado panico 2: ",self.current_token.token_type)
+            self.advance2(self)
+        if self.current_token and self.current_token.token_type == ";":
                 self.advance2(self)
             
 
@@ -81,21 +102,35 @@ class Parser:
         
         if self.current_token and self.current_token.token_type == "main":
             self.match("main")
-            while self.current_token:
-                if self.current_token and self.current_token.token_type == "{":
-                    self.match("{")
-                    root.add_child(self.stmts())
+            if self.current_token and self.current_token.token_type == "{":
+                self.match("{")
+                root.add_child(self.stmts())
+                if self.current_token and self.current_token.token_type == "}":
                     self.match("}")
                 else:
-                    root = Node("Error")
-                    error_token = self.current_token.value if self.current_token else None
-                    self.errors.append(f"1 - Programa invalido: {error_token}")
-                    self.advance()
+                    aux = Node("Error")
+                    root.add_child(aux)
+                    self.match("}")
+            else:
+                root = Node("Error")
+                error_token = self.current_token.value if self.current_token else "None"
+                linea = self.current_token.line if self.current_token else "last"
+                self.errors.append("Expected '{', found '"+error_token+"', linea "+linea)
+                root.add_child(self.stmts())
         else:
             root = Node("Error")
             error_token = self.current_token.value if self.current_token else None
-            self.errors.append(f"2 - Programa invalido: {error_token}")
-            self.advance()
+            self.errors.append("Expected 'main', found '"+error_token+"', linea "+self.current_token.line)
+            self.panic_mode()
+            if self.current_token and self.current_token.token_type == "{":
+                self.match("{")
+                root.add_child(self.stmts())
+                self.match("}")
+            else:
+                root = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                self.errors.append("Expected '{', found '"+error_token+"', linea "+self.current_token.line)
+                root.add_child(self.stmts())
         return root
     
 
@@ -144,20 +179,50 @@ class Parser:
         self.match("do")
         if self.current_token and self.current_token.token_type != "{":
             aux = Node("Error")
+            error_token = self.current_token.value if self.current_token else None
+            self.errors.append("Expected '{', found '",error_token,"', linea ",self.current_token.line)
             root.add_child(aux)
         self.match("{")
-        print("Entramos en el DO")
+        # print("Entramos en el DO")
         # root.add_child(self.stmt())  # Agregar la primera expresión dentro del do-while
         while self.current_token and self.current_token.token_type != "}":
-            print("Encontramos expresiones en el DO")
+            # print("Encontramos expresiones en el DO")
             root.add_child(self.stmts2())  # Agregar más expresiones dentro del do-while
-        print("Salimos del DO")
+        # print("Salimos del DO")
         self.match("}")
-        self.match("until")
-        self.match("(")
-        root.add_child(self.expr())
-        self.match(")")
-        self.match(";")
+        if self.current_token and self.current_token.token_type == "until":
+            self.match("until")
+            if self.current_token and self.current_token.token_type == "(":
+                self.match("(")
+                aux = self.expr()
+                if aux.value == "Error":
+                    root.add_child(aux)
+                    return root
+                root.add_child(aux)
+                if self.current_token and self.current_token.token_type == ")":
+                    self.match(")")
+                else:
+                    aux = Node("Error")
+                    error_token = self.current_token.value if self.current_token else None
+                    self.errors.append("Expected ')', found '"+error_token+"', linea "+self.current_token.line)
+                    root.add_child(aux)
+            else:
+                aux = Node("Error")
+                root.add_child(aux)
+                self.match("(")
+                return root
+        else:
+            aux = Node("Error")
+            root.add_child(aux)
+            self.match("until")
+            return root
+        #print("antes de acabar el dowhile: ", self.current_token.token_type)
+        if self.current_token and self.current_token.token_type == ";":
+            self.match(";")
+        else:
+            aux = Node("Error")
+            root.add_child(aux)
+            self.match(";")
         return root
 
 
@@ -165,16 +230,25 @@ class Parser:
         if self.current_token and self.current_token.token_type == "int":
             root = Node("Entero")
             self.match("int")
-            root.add_child(self.idList())
-            self.match(";")
+            aux = self.idList()
+            root.add_child(aux)
+            if aux.value != "Error":
+                self.match(";")
+            else:
+                self.panic_mode()
         elif self.current_token and self.current_token.token_type == "do":
             root = self.do_while_stmt()
         elif self.current_token and self.current_token.token_type == "float":
             root = Node("Flotante")
             self.match("float")
-            root.add_child(self.idList())
-            self.match(";")
+            aux = self.idList()
+            root.add_child(aux)
+            if aux.value != "Error":
+                self.match(";")
+            else:
+                self.panic_mode()
         elif self.current_token and self.current_token.token_type == "id":
+                errorflag = True
                 root = Node("Asignacion")
                 id_node = Node(self.current_token.value)
                 root.add_child(id_node)
@@ -203,23 +277,54 @@ class Parser:
                         root.add_child(operand_node)
                         self.match(self.current_token.token_type)
                 else:
-                    self.match("=")
-                    expr_node = self.expr()
-                    root.add_child(expr_node)
-                print("Cierre con punto y coma.............")
-                self.match(";")
+                    if self.current_token and self.current_token.token_type == "=":
+                        self.match("=")
+                        #global auxCont
+                        expr_node = self.expr()
+                        #auxCont = 0
+                        root.add_child(expr_node)
+                        if expr_node.value == "Error":
+                            errorflag = False
+                    else:
+                        self.match("=")
+                        aux = Node("Error")
+                        root.add_child(aux)
+                        errorflag = False
+                # print("Cierre con punto y coma.............")
+                # print("Pre ';' = ", self.current_token.token_type," - ", self.current_token.value)
+                # print("Bandera", errorflag)
+                if errorflag:
+                    if self.current_token and self.current_token.token_type != ';':
+                        aux = Node("Error")
+                        root.add_child(aux)
+                    self.match(";")
+                    # print("post ';' = ", self.current_token.token_type," - ", self.current_token.value)
                 #root.add_child(id_node)
         elif self.current_token and self.current_token.token_type == "if":
             root = Node("Sentencia If")
             self.match("if")
-            self.match("(")
-            root.add_child(self.expr())
-            self.match(")")
+            if self.current_token and self.current_token.token_type == "(":
+                self.match("(")
+                root.add_child(self.expr())
+                if self.current_token and self.current_token.token_type == ")":
+                    self.match(")")
+            else:
+                aux = Node("Error")
+                root.add_child(aux)
+                self.match("(")
             if self.current_token and self.current_token.token_type != "{":
                 aux = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                # self.errors.append("Expected '{', found '"+error_token+"', linea "+self.current_token.line)
                 root.add_child(aux)
             self.match("{")
             root.add_child(self.stmts2())
+
+            if self.current_token and self.current_token.token_type != "}":
+                aux = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                self.errors.append("Expected 'main', found '"+error_token+"', linea "+self.current_token.line)
+                root.add_child(aux)
             self.match("}")
 
             if self.current_token and self.current_token.token_type == "else":
@@ -227,29 +332,53 @@ class Parser:
                 self.match("else")
                 if self.current_token and self.current_token.token_type != "{":
                     aux = Node("Error")
+                    error_token = self.current_token.value if self.current_token else None
+                    self.errors.append("Expected '{', found '"+error_token+"', linea "+self.current_token.line)
                     auxElse.add_child(aux)
                 self.match("{")
                 else_stmt_node = self.stmts2()
                 auxElse.add_child(else_stmt_node)
+
+                if self.current_token and self.current_token.token_type != "}":
+                    aux = Node("Error")
+                    error_token = self.current_token.value if self.current_token else None
+                    self.errors.append("Expected 'main', found '"+error_token+"', linea "+self.current_token.line)
+                    auxElse.add_child(aux)
                 self.match("}")
                 root.add_child(auxElse)
 
-            self.match("end")
+            if self.current_token and self.current_token.token_type != "end":
+                aux = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                self.errors.append("Expected 'end', found '"+error_token+"', linea "+self.current_token.line)
+                root.add_child(aux)
+            else:
+                self.match("end")
            
         elif self.current_token and self.current_token.token_type == "while":
             root = Node("Sentencia While")
             self.match("while")
-            self.match("(")
-            expr_node = self.expr()
-            root.add_child(expr_node)
-            self.match(")")
+            if self.current_token and self.current_token.token_type == "(":
+                self.match("(")
+                root.add_child(self.expr())
+                if self.current_token and self.current_token.token_type == ")":
+                    self.match(")")
+            else:
+                aux = Node("Error")
+                root.add_child(aux)
+                self.match("(")
             if self.current_token and self.current_token.token_type != "{":
                 aux = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                #auxText = "Expected '{', found '"+error_token+"', linea "+self.current_token.line
+                self.errors.append("Expected '{', found '"+error_token+"', linea "+self.current_token.line)
                 root.add_child(aux)
             self.match("{")
             root.add_child(self.stmts2())
             if self.current_token and self.current_token.token_type != "}":
                 aux = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                self.errors.append("Expected 'main', found '"+error_token+"', linea "+self.current_token.line)
                 root.add_child(aux)
             self.match("}")
         elif self.current_token and self.current_token.token_type == "{":
@@ -260,19 +389,32 @@ class Parser:
         elif self.current_token and self.current_token.token_type == "cin":
             root = Node("Entrada")
             self.match("cin")
-            root.add_child(self.idList())
+            aux = self.idList()
+            root.add_child(aux)
+            if aux.value == "Error":
+                self.panic_mode3()
+                # print(self.current_token.token_type + " - " + self.current_token.value)
+                return root
             self.match(";")
         elif self.current_token and self.current_token.token_type == "cout":
             root = Node("Salida")
             self.match("cout")
-            root.add_child(self.expr())
-            self.match(";")
+            aux = self.expr()
+            if aux.value == "Error":
+                root.add_child(aux)
+                return root
+            root.add_child(aux)
+            if self.current_token and self.current_token.token_type == ";":
+                self.match(";")
+            else:
+                aux = Node("Error")
+                root.add_child(aux)
         else:
             root = Node("Error")
             error_token = self.current_token.value if self.current_token else None
             if error_token:
-                self.errors.append(f"Sentencia inválida: {error_token}")
-            self.advance()
+                self.errors.append(f"Sentencia inválida: {error_token}, linea {self.current_token.line}")
+            self.panic_mode3()
         return root
 
 # corregir para la coma 
@@ -294,11 +436,22 @@ class Parser:
             id_node = Node(self.current_token.value)
             root.add_child(id_node)
             self.match("id")
+            if self.current_token and self.current_token.token_type not in [",",";"]:
+                # print("Marca error", self.current_token.token_type)
+                root = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                self.errors.append(f"Expected ',' or ';', found '{error_token}', linea {self.current_token.line}")
+                #print("Antes de salir del ciclo idList", self.current_token.token_type)
+                return root
         else:
+            #print("Error de int o float inicio.")
             root = Node("Error")
             error_token = self.current_token.value if self.current_token else None
+            self.errors.append(f"Expected 'id', found '{error_token}', linea {self.current_token.line}")
             #self.errors.append(f"Token invalido: {error_token}")
-            self.errors.append("Se esperaba un identificador al inicio de la lista de identificadores.")
+            #self.errors.append("Se esperaba un identificador al inicio de la lista de identificadores.")
+            #print("Antes de salir del ciclo idList", self.current_token.token_type)
+            return root
         
         while self.current_token and self.current_token.token_type == ",":
             self.match(",")
@@ -306,17 +459,30 @@ class Parser:
                 id_node = Node(self.current_token.value)
                 root.add_child(id_node)
                 self.match("id")
+                #print(self.current_token.token_type)
+                if self.current_token and self.current_token.token_type not in [",",";"]:
+                    #print("Marca error", self.current_token.token_type)
+                    root = Node("Error")
+                    error_token = self.current_token.value if self.current_token else None
+                    self.errors.append(f"Expected ',' or ';', found '{error_token}', linea {self.current_token.line}")
+                    #self.advance2(self)
+                    #print("Antes de salir del ciclo idList", self.current_token.token_type)
+                    return root
             else:
+                #print("Error de las comas - ", self.current_token.token_type)
                 root = Node("Error")
                 error_token = self.current_token.value if self.current_token else None
-                self.errors.append(f"Token invalido: {error_token}")
+                self.errors.append(f"Expected 'id', found '{error_token}', linea {self.current_token.line}")
+                #self.advance2(self)
+                #print("Antes de salir del ciclo idList", self.current_token.token_type)
                 return root
-                
+        
+        # print("Antes de salir del ciclo idList", self.current_token.token_type)
         return root
 
 
     def expr(self):
-        print("Entra expr")
+        # print("Entra expr")
         root = self.relational_expr()
         if root.value == "Error":
             return root
@@ -329,12 +495,12 @@ class Parser:
                 return aux
             op_node.add_child(aux)
             root = op_node
-        print("Sale expr")
+        # print("Sale expr")
         return root
     
 
     def relational_expr(self):
-        print("Entra relational_expr")
+        # print("Entra relational_expr")
         root = self.term()
         if root.value == "Error":
             return root
@@ -347,12 +513,12 @@ class Parser:
                 return aux
             op_node.add_child(aux)
             root = op_node
-        print("Sale relational_expr")
+        # print("Sale relational_expr")
         return root
 
 
     def term(self):
-        print("Entra term")
+        # print("Entra term")
         root = self.factor()
         if root.value == "Error":
             return root
@@ -365,16 +531,27 @@ class Parser:
                 return aux
             op_node.add_child(aux)
             root = op_node
-        print("Sale term")
+        # print("Sale term")
         return root
 
     def factor(self):
-        print("Entra factor")
+        #global auxCont
+        #auxCont = auxCont + 1
+        # print("Entra factor")
         root = Node("Factor")
         if self.current_token and self.current_token.token_type == "(":
             self.match("(")
             root = self.expr()
             if root.value == "Error":
+                return root
+            if self.current_token and self.current_token.token_type != ")":
+                #print("Marca error", self.current_token.token_type)
+                root = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                # self.errors.append(f"Expected ')', found '{error_token}', linea {self.current_token.line}, cont {auxCont}")
+                #self.advance2(self)
+                #print("Antes de salir del ciclo idList", self.current_token.token_type)
+                self.match(")")
                 return root
             self.match(")")
         elif self.current_token and self.current_token.token_type in ["id", "num"]:
@@ -383,12 +560,19 @@ class Parser:
                 value_node = Node(value)
                 root = value_node
             self.match(self.current_token.token_type)
+            if self.current_token and self.current_token.token_type not in ["(", ")", ";", "*", "/", "%", "<", ">", "<=", ">=", "==", "!=", "&&", "||", "+", "-"]:
+                root = Node("Error")
+                error_token = self.current_token.value if self.current_token else None
+                self.errors.append(f"Expected 'operador', ')' or ';', found '{error_token}', linea {self.current_token.line}")
+                self.panic_mode()
+            # print("Antes de salir del ciclo idList", self.current_token.token_type)
         else:
             root = Node("Error")
             error_token = self.current_token.value if self.current_token else None
-            self.errors.append(f"factor invalido: {error_token}")
-            self.advance()
-        print("Sale factor")
+            self.errors.append(f"Expected '(','id' or 'num', found '{error_token}', linea {self.current_token.line}")
+            self.panic_mode()
+            # self.advance2(self)
+        # print("Sale factor")
         return root
 
 
@@ -414,16 +598,20 @@ for line in lines:
         if token_parts[1].strip() == "identificador" :
             token_type = "id"
             value = token_parts[0].strip()
+            line = token_parts[2].strip()
         elif token_parts[1].strip() == "flotante":
             token_type = "num"
             value = token_parts[0].strip()
+            line = token_parts[2].strip()
         elif token_parts[1].strip() == "entero":
             token_type = "num"
             value = token_parts[0].strip()
+            line = token_parts[2].strip()
         else:
             token_type = token_parts[0].strip()
             value = token_parts[0].strip()
-        token = Token(token_type, value)
+            line = token_parts[2].strip()
+        token = Token(token_type, value, line)
         token_list.append(token)
 # # Imprimir la lista de objetos Token
 for tok in token_list:

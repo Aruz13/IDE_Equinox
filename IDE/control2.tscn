@@ -151,7 +151,7 @@ text = "main {
 			cin x; 
 			mas=36/7; 
 		}
-	}while(y==5);
+	}until(y==5);
 	while(y==0){
 		cin mas;
 		cout x;
@@ -199,7 +199,8 @@ layout_mode = 2
 [node name="Sintactico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "HOLA"
+text = "Arbol de analisis sintactico:"
+placeholder_text = "Arbol de analisis sintactico:"
 editable = false
 
 [node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico"]
@@ -261,6 +262,18 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Tamaño de la fuente del codigo: "
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -305,5 +318,6 @@ dialog_autowrap = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button6" to="." method="_on_button_6_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button7" to="." method="_on_button_7_pressed"]
 [connection signal="text_changed" from="VBoxContainer/VSplitContainer/HSplitContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
