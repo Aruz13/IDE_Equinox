@@ -70,16 +70,22 @@ i = 0
 while i < len(contenidodecodigo):
     # Ignorar espacios en blanco
     if contenidodecodigo[i].isspace():
+        #print("Espacio antes: ",'"', contenidodecodigo[i],'"')
         if contenidodecodigo[i] == "\n":
             linea += 1
             col = 1
         else:
             col += 1
+        #if contenidodecodigo[i] == "\t":
+        #    print("Tabulacion")
+        #print(linea)
         i += 1
+        #print("Espacio despues: ",'"', contenidodecodigo[i],'"')
         continue
     # Identificar comentarios de una línea
     if contenidodecodigo[i : i + 2] == "//":
-        i = contenidodecodigo.index("\n", i)
+        i = contenidodecodigo.index("\n", i) + 1
+        #print('"',contenidodecodigo[i: i+10],'"')
         linea += 1
         col = 1
         continue

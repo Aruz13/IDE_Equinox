@@ -14,6 +14,8 @@ config/name="IDE"
 config/tags=PackedStringArray("compilador", "uni")
 run/main_scene="res://control2.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+run/max_fps=60
+run/low_processor_mode=true
 boot_splash/bg_color=Color(0, 0.12549, 0.121569, 1)
 boot_splash/image="res://images/logo.png"
 boot_splash/fullsize=false
@@ -38,6 +40,11 @@ compilar={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194336,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[physics]
+
+common/physics_ticks_per_second=1
+common/max_physics_steps_per_frame=1
 
 [rendering]
 

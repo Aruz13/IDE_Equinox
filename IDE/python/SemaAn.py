@@ -16,8 +16,11 @@ class Token:
 
 
 class Node:
-    def __init__(self, value, children=None):
+    def __init__(self, value, line=None, children=None):
         self.value = value
+        self.line_no = line  # Guardamos el número de línea
+        self.type = None  # Nuevo atributo para el tipo
+        self.val = None  # Nuevo atributo para el valor
         self.children = children or []
 
     def add_child(self, node):
@@ -90,7 +93,7 @@ class Parser:
             
 
     def program22(self):
-        root = Node("Programa")
+        root = Node("Programa", self.current_token.line)
         self.match("main")
         self.match("{")
         root.add_child(self.stmts())
@@ -98,7 +101,7 @@ class Parser:
         return root
 
     def program(self):
-        root = Node("Programa")
+        root = Node("Programa", self.current_token.line)
         
         if self.current_token and self.current_token.token_type == "main":
             self.match("main")
@@ -135,7 +138,7 @@ class Parser:
     
 
     def stmts(self):
-        root = Node("Declaraciones")
+        root = Node("Declaraciones", self.current_token.line)
         if self.current_token and self.current_token.token_type in ["int", "float", "id", "if", "{", "while", "cin", "cout"]:
             root.add_child(self.stmt())
         while self.current_token and self.current_token.token_type != "}":
@@ -148,7 +151,7 @@ class Parser:
 
 
     def stmts2(self):
-        root = Node("Sentencias")
+        root = Node("Sentencias", self.current_token.line)
         if self.current_token and self.current_token.token_type in ["int", "float", "id", "if", "{", "while", "cin", "cout"]:
             root.add_child(self.stmt())
         while self.current_token and self.current_token.token_type != "}":
@@ -161,7 +164,7 @@ class Parser:
 
   
     def do_while_stmt222(self):
-        root = Node("SentenciaDoWhile")
+        root = Node("SentenciaDoWhile", self.current_token.line)
         self.match("do")
         root.add_child(self.stmt())  # Agregar la primera expresión dentro del do-while
         while self.current_token and self.current_token.token_type != "while":
@@ -175,7 +178,7 @@ class Parser:
 
 
     def do_while_stmt(self):
-        root = Node("SentenciaDoWhile")
+        root = Node("SentenciaDoWhile", self.current_token.line)
         self.match("do")
         if self.current_token and self.current_token.token_type != "{":
             aux = Node("Error")
@@ -228,7 +231,7 @@ class Parser:
 
     def stmt(self):
         if self.current_token and self.current_token.token_type == "int":
-            root = Node("Entero")
+            root = Node("Entero", self.current_token.line)
             self.match("int")
             aux = self.idList()
             root.add_child(aux)
@@ -239,7 +242,7 @@ class Parser:
         elif self.current_token and self.current_token.token_type == "do":
             root = self.do_while_stmt()
         elif self.current_token and self.current_token.token_type == "float":
-            root = Node("Flotante")
+            root = Node("Flotante", self.current_token.line)
             self.match("float")
             aux = self.idList()
             root.add_child(aux)
@@ -249,31 +252,31 @@ class Parser:
                 self.panic_mode()
         elif self.current_token and self.current_token.token_type == "id":
                 errorflag = True
-                root = Node("Asignacion")
-                id_node = Node(self.current_token.value)
+                root = Node("Asignacion", self.current_token.line)
+                id_node = Node(self.current_token.value, self.current_token.line)
                 root.add_child(id_node)
                 self.match("id")# a
                 if self.current_token and self.current_token.token_type in ["++", "--"]:
                     #op_node = Node(self.current_token.value) # ++
                     if self.current_token.token_type == "++":
-                        op_node = Node("+")
+                        op_node = Node("+", self.current_token.line)
                         op_node.add_child(id_node)
-                        uno_node = Node("1")
+                        uno_node = Node("1", self.current_token.line)
                         op_node.add_child(uno_node)
                         root.add_child(op_node)
                     else:
-                        op_node = Node("-")
+                        op_node = Node("-", self.current_token.line)
                         op_node.add_child(id_node)
-                        uno_node = Node("1")
+                        uno_node = Node("1", self.current_token.line)
                         op_node.add_child(uno_node)
                         root.add_child(op_node)                  
                     self.match(self.current_token.token_type)
                     #root.add_child(op_node)
                 elif self.current_token and self.current_token.token_type in ["<", ">", "<=", ">=", "==", "!=", "&&", "||"]:
-                    op_node = Node(self.current_token.value)
+                    op_node = Node(self.current_token.value, self.current_token.line)
                     self.match(self.current_token.token_type)
                     if self.current_token and self.current_token.token_type in ["id", "num"]:
-                        operand_node = Node(self.current_token.value)
+                        operand_node = Node(self.current_token.value, self.current_token.line)
                         root.add_child(operand_node)
                         self.match(self.current_token.token_type)
                 else:
@@ -301,7 +304,7 @@ class Parser:
                     # print("post ';' = ", self.current_token.token_type," - ", self.current_token.value)
                 #root.add_child(id_node)
         elif self.current_token and self.current_token.token_type == "if":
-            root = Node("Sentencia If")
+            root = Node("Sentencia If", self.current_token.line)
             self.match("if")
             if self.current_token and self.current_token.token_type == "(":
                 self.match("(")
@@ -328,7 +331,7 @@ class Parser:
             self.match("}")
 
             if self.current_token and self.current_token.token_type == "else":
-                auxElse = Node("Sentencia Else")
+                auxElse = Node("Sentencia Else", self.current_token.line)
                 self.match("else")
                 if self.current_token and self.current_token.token_type != "{":
                     aux = Node("Error")
@@ -356,7 +359,7 @@ class Parser:
                 self.match("end")
            
         elif self.current_token and self.current_token.token_type == "while":
-            root = Node("Sentencia While")
+            root = Node("Sentencia While", self.current_token.line)
             self.match("while")
             if self.current_token and self.current_token.token_type == "(":
                 self.match("(")
@@ -382,12 +385,12 @@ class Parser:
                 root.add_child(aux)
             self.match("}")
         elif self.current_token and self.current_token.token_type == "{":
-            root = Node("Bloque")
+            root = Node("Bloque", self.current_token.line)
             self.match("{")
             root.add_child(self.stmts2())
             self.match("}")
         elif self.current_token and self.current_token.token_type == "cin":
-            root = Node("Entrada")
+            root = Node("Entrada", self.current_token.line)
             self.match("cin")
             aux = self.idList()
             root.add_child(aux)
@@ -397,7 +400,7 @@ class Parser:
                 return root
             self.match(";")
         elif self.current_token and self.current_token.token_type == "cout":
-            root = Node("Salida")
+            root = Node("Salida", self.current_token.line)
             self.match("cout")
             aux = self.expr()
             if aux.value == "Error":
@@ -419,9 +422,9 @@ class Parser:
 
 # corregir para la coma 
     def idList222(self):
-        root = Node("Identificadores")
+        root = Node("Identificadores", self.current_token.line)
         while self.current_token and self.current_token.token_type == "id":
-            id_node = Node(self.current_token.value)
+            id_node = Node(self.current_token.value, self.current_token.line)
             root.add_child(id_node)
             self.match("id")
             if self.current_token and self.current_token.token_type == ",":
@@ -431,9 +434,9 @@ class Parser:
 
 
     def idList(self):
-        root = Node("Identificadores")
+        root = Node("Identificadores", self.current_token.line)
         if self.current_token and self.current_token.token_type == "id":
-            id_node = Node(self.current_token.value)
+            id_node = Node(self.current_token.value, self.current_token.line)
             root.add_child(id_node)
             self.match("id")
             if self.current_token and self.current_token.token_type not in [",",";"]:
@@ -456,7 +459,7 @@ class Parser:
         while self.current_token and self.current_token.token_type == ",":
             self.match(",")
             if self.current_token and self.current_token.token_type == "id":
-                id_node = Node(self.current_token.value)
+                id_node = Node(self.current_token.value, self.current_token.line)
                 root.add_child(id_node)
                 self.match("id")
                 #print(self.current_token.token_type)
@@ -487,7 +490,7 @@ class Parser:
         if root.value == "Error":
             return root
         while self.current_token and self.current_token.token_type in ["+", "-"]:
-            op_node = Node(self.current_token.value)
+            op_node = Node(self.current_token.value, self.current_token.line)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
             aux = self.relational_expr()
@@ -505,7 +508,7 @@ class Parser:
         if root.value == "Error":
             return root
         while self.current_token and self.current_token.token_type in ["<", ">", "<=", ">=", "==", "!=", "&&", "||"]:
-            op_node = Node(self.current_token.value)
+            op_node = Node(self.current_token.value, self.current_token.line)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
             aux = self.term() 
@@ -523,7 +526,7 @@ class Parser:
         if root.value == "Error":
             return root
         while self.current_token and self.current_token.token_type in ["*", "/", "%"]:
-            op_node = Node(self.current_token.value)
+            op_node = Node(self.current_token.value, self.current_token.line)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
             aux = self.factor() 
@@ -538,7 +541,7 @@ class Parser:
         #global auxCont
         #auxCont = auxCont + 1
         # print("Entra factor")
-        root = Node("Factor")
+        root = Node("Factor", self.current_token.line)
         if self.current_token and self.current_token.token_type == "(":
             self.match("(")
             root = self.expr()
@@ -557,7 +560,7 @@ class Parser:
         elif self.current_token and self.current_token.token_type in ["id", "num"]:
             value = self.current_token.value if self.current_token else None
             if value is not None:
-                value_node = Node(value)
+                value_node = Node(value, self.current_token.line)
                 root = value_node
             self.match(self.current_token.token_type)
             if self.current_token and self.current_token.token_type not in ["(", ")", ";", "*", "/", "%", "<", ">", "<=", ">=", "==", "!=", "&&", "||", "+", "-"]:
@@ -585,6 +588,94 @@ class Parser:
             print("Sintaxis correcta. Compilacion exitosa.")
 
         return ast
+    
+
+class SemanticAnalyzer:
+    def __init__(self):
+        self.errors = []
+        self.symbol_table = {}
+
+    def analyze(self, ast):
+        self.visit_node(ast)
+
+    def visit_node(self, node):
+        if node.value == "Entero":
+            self.handle_int_declaration(node)
+        elif node.value == "Flotante":
+            self.handle_float_declaration(node)
+        elif node.value == "Asignacion":
+            self.handle_assignment(node)
+
+        for child in node.children:
+            self.visit_node(child)
+
+    def handle_int_declaration(self, node):
+        variable_name = node.children[0].value
+        if variable_name in self.symbol_table:
+            self.errors.append(f"Duplicado: Variable {variable_name} ya declarada, linea: {node.children[0].line_no}")
+        else:
+            self.symbol_table[variable_name] = {
+                "type": "int",
+                "value": None,
+                "line_numbers": [node.children[0].line_no],  # Agregamos el número de línea
+            }
+
+    def handle_float_declaration(self, node):
+        variable_name = node.children[0].value
+        if variable_name in self.symbol_table:
+            self.errors.append(f"Duplicado: Variable {variable_name} ya declarada, linea: {node.children[0].line_no}")
+        else:
+            self.symbol_table[variable_name] = {
+                "type": "float",
+                "value": None,
+                "line_no": [node.children[0].line_no],  # Agregamos el número de línea
+            }
+
+    def handle_assignment(self, node):
+        variable_name = node.children[0].value
+        if variable_name not in self.symbol_table:
+            self.errors.append(f"No declarado: Variable {variable_name} no se ha declarado, linea: {node.children[0].line_no}")
+        else:
+            # Realizar más comprobaciones semánticas para asignaciones si es necesario
+            pass
+
+
+# Función para anotar el árbol sintáctico
+def annotate_tree(node, level=0, output=None):
+    indent = " | " * level
+    if output:
+        value_str = f"{node.value} (Línea {node.line_no})"
+        if hasattr(node, "type"):
+            value_str += f" [Tipo: {node.type}]"
+        if hasattr(node, "val"):
+            value_str += f" [Valor: {node.val}]"
+        output.write(f"{indent}{value_str}\n")
+    for child in node.children:
+        annotate_tree(child, level + 1, output)
+
+# Función para imprimir el árbol anotado y guardarlo en un archivo
+def print_ast(node, level=0, is_last_child=False, output=None):
+    indent = " | " * level
+    if output:
+        value_str = f"{node.value} (Línea {node.line_no})"
+        if hasattr(node, "type"):
+            value_str += f" [Tipo: {node.type}]"
+        if hasattr(node, "val"):
+            value_str += f" [Valor: {node.val}]"
+        output.write(f"{indent}{value_str}\n")
+    for i, child in node.children:
+        is_last = i == len(node.children) - 1
+        print_ast(child, level + 1, is_last, output)
+
+# Función para crear un archivo de texto para la tabla de símbolos
+def create_symbol_table_text(symbol_table, filename):
+    with open(filename, "w") as file:
+        file.write("Nombre Variable\tTipo\tValor\tRegistro (loc)\tNúmeros de línea\n")
+        for variable, data in symbol_table.items():
+            line_no_numbers = ", ".join(map(str, data['line_numbers']))
+            file.write(f"{variable}\t{data['type']}\t{data['value']}\t -- \t{line_no_numbers}\n")
+
+
 # print(lexico_file)
 with open(lexico_file, 'r') as file:
     lines = file.readlines()
@@ -624,22 +715,19 @@ for tok in token_list:
 parser = Parser(token_list)
 ast = parser.parse()
 
-# Print errors
-if parser.errors:
-    print("Errores de sintaxis:")
-    for error in parser.errors:
-        print(error)
+# Crear instancia del SemanticAnalyzer y analizar el árbol sintáctico
+semantic_analyzer = SemanticAnalyzer()
+semantic_analyzer.analyze(ast)
 
-def print_ast(node, level=0):
-    indent = ("~") * level
-    line = f"{indent} ==> {node.value}"
-    print(line)
-    for child in node.children[:-1]:
-        print_ast(child, level + 1)
-    if node.children:
-        print_ast(node.children[-1], level + 1)
+# Guardar errores semánticos en un archivo
+with open("errores_semanticos.txt", "w", encoding="utf-8") as error_file:
+    for error in semantic_analyzer.errors:
+        error_file.write(error + "\n")
 
+# Anotar el árbol sintáctico
+with open("arbol_sintactico_anotado.txt", "w", encoding="utf-8") as annotated_tree_file:
+    annotated_tree_file.write("Árbol Sintáctico Anotado:\n")
+    annotate_tree(ast, output=annotated_tree_file)
 
-print("Arbol de analisis sintactico:")
-print_ast(ast)
-
+# Crear un archivo de texto para la tabla de símbolos
+create_symbol_table_text(semantic_analyzer.symbol_table, "tabla_simbolos.txt")

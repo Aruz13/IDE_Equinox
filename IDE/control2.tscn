@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfok3u6m8kmt2"]
+[gd_scene load_steps=11 format=3 uid="uid://cfok3u6m8kmt2"]
 
 [ext_resource type="Script" path="res://control2.gd" id="1_l3lw0"]
 [ext_resource type="Texture2D" uid="uid://h1k01yg23b1p" path="res://images/new.png" id="2_fva7d"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bsnhy4ld1t8c0" path="res://images/close.png" id="5_3omg0"]
 [ext_resource type="Texture2D" uid="uid://dlc844hrj6bda" path="res://images/play.png" id="6_insyo"]
 [ext_resource type="CodeHighlighter" uid="uid://b083jk2bygk33" path="res://CodeHighPastel.tres" id="8_64crh"]
+[ext_resource type="FontFile" uid="uid://cd4n7c3kq0dwm" path="res://classic_console_neue/clacon2.ttf" id="9_of4nt"]
 
 [sub_resource type="Theme" id="Theme_omhid"]
 CodeEdit/colors/word_highlighted_color = Color(0.784314, 0.270588, 1, 0.658824)
@@ -104,6 +105,10 @@ text = "Lexico"
 layout_mode = 2
 text = "Sintaxis"
 
+[node name="Button8" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Semantica"
+
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -117,6 +122,7 @@ layout_direction = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_omhid")
+theme_override_font_sizes/font_size = 18
 text = "main {
 	int x,y,z;
 	float a,b,c;
@@ -157,7 +163,9 @@ text = "main {
 		cout x;
 	}
 }"
-placeholder_text = "print(\"Hello World\")"
+placeholder_text = "main {
+	
+}"
 minimap_draw = true
 syntax_highlighter = ExtResource("8_64crh")
 highlight_all_occurrences = true
@@ -185,7 +193,7 @@ auto_brace_completion_pairs = {
 [node name="TabContainer2" type="TabContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 2
 
 [node name="Lexico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 visible = false
@@ -194,6 +202,7 @@ text = "1"
 editable = false
 
 [node name="Sintactico" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+visible = false
 layout_mode = 2
 
 [node name="Sintactico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico"]
@@ -208,17 +217,20 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 4
 
-[node name="Semantico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
-visible = false
+[node name="Semantico" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 layout_mode = 2
-text = "3"
+
+[node name="Semantico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Semantico"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Arbol de analisis semantico:"
+placeholder_text = "Arbol de analisis semantico:"
 editable = false
 
-[node name="Hash Table" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
-visible = false
+[node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Semantico"]
 layout_mode = 2
-text = "4"
-editable = false
+size_flags_vertical = 3
+columns = 4
 
 [node name="Codigo intermedio" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 visible = false
@@ -233,8 +245,10 @@ size_flags_vertical = 3
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
+current_tab = 3
 
 [node name="Errores Lexicos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_readonly_color = Color(0.937255, 0, 0, 1)
 editable = false
@@ -249,6 +263,13 @@ editable = false
 visible = false
 layout_mode = 2
 text = "3"
+editable = false
+
+[node name="Hash Table" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_of4nt")
+theme_override_font_sizes/font_size = 16
+text = "4"
 editable = false
 
 [node name="Resultados" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
@@ -310,6 +331,10 @@ Este suele ubicarse en \"C:\\Users\\$USER\\AppData\\Local\\Programs\\Python\\Pyt
 dialog_close_on_escape = false
 dialog_autowrap = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
@@ -317,7 +342,10 @@ dialog_autowrap = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button6" to="." method="_on_button_6_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button8" to="." method="_on_button_8_pressed"]
+[connection signal="caret_changed" from="VBoxContainer/VSplitContainer/HSplitContainer/CodeEdit" to="." method="_on_code_edit_caret_changed"]
 [connection signal="text_changed" from="VBoxContainer/VSplitContainer/HSplitContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

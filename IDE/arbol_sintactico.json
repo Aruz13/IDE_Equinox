@@ -1,0 +1,1606 @@
+{
+    "value": "Programa",
+    "children": [
+        {
+            "value": "Sentencias",
+            "children": [
+                {
+                    "value": "Declaraci\u00f3nInt",
+                    "children": [
+                        {
+                            "value": "IdList",
+                            "children": [
+                                {
+                                    "value": "x",
+                                    "children": [],
+                                    "line_no": "2",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 0
+                                },
+                                {
+                                    "value": "y",
+                                    "children": [],
+                                    "line_no": "2",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 0
+                                },
+                                {
+                                    "value": "z",
+                                    "children": [],
+                                    "line_no": "2",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 0
+                                }
+                            ],
+                            "line_no": null,
+                            "type": null,
+                            "identificator": false,
+                            "val": null
+                        }
+                    ],
+                    "line_no": "2",
+                    "type": null,
+                    "identificator": false,
+                    "val": null
+                },
+                {
+                    "value": "Declaraci\u00f3nFloat",
+                    "children": [
+                        {
+                            "value": "IdList",
+                            "children": [
+                                {
+                                    "value": "a",
+                                    "children": [],
+                                    "line_no": "3",
+                                    "type": "float",
+                                    "identificator": false,
+                                    "val": 0
+                                },
+                                {
+                                    "value": "b",
+                                    "children": [],
+                                    "line_no": "3",
+                                    "type": "float",
+                                    "identificator": false,
+                                    "val": 0
+                                },
+                                {
+                                    "value": "c",
+                                    "children": [],
+                                    "line_no": "3",
+                                    "type": "float",
+                                    "identificator": false,
+                                    "val": 0
+                                }
+                            ],
+                            "line_no": null,
+                            "type": null,
+                            "identificator": false,
+                            "val": null
+                        }
+                    ],
+                    "line_no": "3",
+                    "type": null,
+                    "identificator": false,
+                    "val": null
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "suma",
+                            "children": [],
+                            "line_no": "4",
+                            "type": null,
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "45",
+                            "children": [],
+                            "line_no": "4",
+                            "type": null,
+                            "identificator": false,
+                            "val": null
+                        }
+                    ],
+                    "line_no": "4",
+                    "type": null,
+                    "identificator": false,
+                    "val": null
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "x",
+                            "children": [],
+                            "line_no": "5",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "32.32",
+                            "children": [],
+                            "line_no": "5",
+                            "type": "float",
+                            "identificator": false,
+                            "val": 32.32
+                        }
+                    ],
+                    "line_no": "5",
+                    "type": null,
+                    "identificator": false,
+                    "val": null
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "x",
+                            "children": [],
+                            "line_no": "6",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "23",
+                            "children": [],
+                            "line_no": "6",
+                            "type": "int",
+                            "identificator": false,
+                            "val": 23
+                        }
+                    ],
+                    "line_no": "6",
+                    "type": "int",
+                    "identificator": false,
+                    "val": 23
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "y",
+                            "children": [],
+                            "line_no": "7",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "-",
+                            "children": [
+                                {
+                                    "value": "+",
+                                    "children": [
+                                        {
+                                            "value": "2",
+                                            "children": [],
+                                            "line_no": "7",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 2
+                                        },
+                                        {
+                                            "value": "3",
+                                            "children": [],
+                                            "line_no": "7",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 3
+                                        }
+                                    ],
+                                    "line_no": "7",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 5
+                                },
+                                {
+                                    "value": "1",
+                                    "children": [],
+                                    "line_no": "7",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 1
+                                }
+                            ],
+                            "line_no": "7",
+                            "type": "int",
+                            "identificator": false,
+                            "val": 4
+                        }
+                    ],
+                    "line_no": "7",
+                    "type": "int",
+                    "identificator": false,
+                    "val": 4
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "z",
+                            "children": [],
+                            "line_no": "8",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "+",
+                            "children": [
+                                {
+                                    "value": "y",
+                                    "children": [],
+                                    "line_no": "8",
+                                    "type": "int",
+                                    "identificator": true,
+                                    "val": 4
+                                },
+                                {
+                                    "value": "7",
+                                    "children": [],
+                                    "line_no": "8",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 7
+                                }
+                            ],
+                            "line_no": "8",
+                            "type": "int",
+                            "identificator": false,
+                            "val": 11
+                        }
+                    ],
+                    "line_no": "8",
+                    "type": "int",
+                    "identificator": false,
+                    "val": 11
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "y",
+                            "children": [],
+                            "line_no": "9",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "+",
+                            "children": [
+                                {
+                                    "value": "y",
+                                    "children": [],
+                                    "line_no": "9",
+                                    "type": "int",
+                                    "identificator": true,
+                                    "val": 4
+                                },
+                                {
+                                    "value": "1",
+                                    "children": [],
+                                    "line_no": "9",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 1
+                                }
+                            ],
+                            "line_no": "9",
+                            "type": "int",
+                            "identificator": false,
+                            "val": 5
+                        }
+                    ],
+                    "line_no": "9",
+                    "type": "int",
+                    "identificator": false,
+                    "val": 5
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "a",
+                            "children": [],
+                            "line_no": "10",
+                            "type": "float",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "-",
+                            "children": [
+                                {
+                                    "value": "+",
+                                    "children": [
+                                        {
+                                            "value": "-",
+                                            "children": [
+                                                {
+                                                    "value": "+",
+                                                    "children": [
+                                                        {
+                                                            "value": "24.0",
+                                                            "children": [],
+                                                            "line_no": "10",
+                                                            "type": "float",
+                                                            "identificator": false,
+                                                            "val": 24.0
+                                                        },
+                                                        {
+                                                            "value": "4",
+                                                            "children": [],
+                                                            "line_no": "10",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 4
+                                                        }
+                                                    ],
+                                                    "line_no": "10",
+                                                    "type": "float",
+                                                    "identificator": false,
+                                                    "val": 28.0
+                                                },
+                                                {
+                                                    "value": "*",
+                                                    "children": [
+                                                        {
+                                                            "value": "/",
+                                                            "children": [
+                                                                {
+                                                                    "value": "1",
+                                                                    "children": [],
+                                                                    "line_no": "10",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 1
+                                                                },
+                                                                {
+                                                                    "value": "3",
+                                                                    "children": [],
+                                                                    "line_no": "10",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 3
+                                                                }
+                                                            ],
+                                                            "line_no": "10",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 0
+                                                        },
+                                                        {
+                                                            "value": "2",
+                                                            "children": [],
+                                                            "line_no": "10",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 2
+                                                        }
+                                                    ],
+                                                    "line_no": "10",
+                                                    "type": "int",
+                                                    "identificator": false,
+                                                    "val": 0
+                                                }
+                                            ],
+                                            "line_no": "10",
+                                            "type": "float",
+                                            "identificator": false,
+                                            "val": 28.0
+                                        },
+                                        {
+                                            "value": "34",
+                                            "children": [],
+                                            "line_no": "10",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 34
+                                        }
+                                    ],
+                                    "line_no": "10",
+                                    "type": "float",
+                                    "identificator": false,
+                                    "val": 62.0
+                                },
+                                {
+                                    "value": "1",
+                                    "children": [],
+                                    "line_no": "10",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 1
+                                }
+                            ],
+                            "line_no": "10",
+                            "type": "float",
+                            "identificator": false,
+                            "val": 61.0
+                        }
+                    ],
+                    "line_no": "10",
+                    "type": "float",
+                    "identificator": false,
+                    "val": 61.0
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "x",
+                            "children": [],
+                            "line_no": "11",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "*",
+                            "children": [
+                                {
+                                    "value": "-",
+                                    "children": [
+                                        {
+                                            "value": "5",
+                                            "children": [],
+                                            "line_no": "11",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 5
+                                        },
+                                        {
+                                            "value": "3",
+                                            "children": [],
+                                            "line_no": "11",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 3
+                                        }
+                                    ],
+                                    "line_no": "11",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 2
+                                },
+                                {
+                                    "value": "/",
+                                    "children": [
+                                        {
+                                            "value": "8",
+                                            "children": [],
+                                            "line_no": "11",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 8
+                                        },
+                                        {
+                                            "value": "2",
+                                            "children": [],
+                                            "line_no": "11",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 2
+                                        }
+                                    ],
+                                    "line_no": "11",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 4
+                                }
+                            ],
+                            "line_no": "11",
+                            "type": "int",
+                            "identificator": false,
+                            "val": 8
+                        }
+                    ],
+                    "line_no": "11",
+                    "type": "int",
+                    "identificator": false,
+                    "val": 8
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "y",
+                            "children": [],
+                            "line_no": "12",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "-",
+                            "children": [
+                                {
+                                    "value": "-",
+                                    "children": [
+                                        {
+                                            "value": "+",
+                                            "children": [
+                                                {
+                                                    "value": "5",
+                                                    "children": [],
+                                                    "line_no": "12",
+                                                    "type": "int",
+                                                    "identificator": false,
+                                                    "val": 5
+                                                },
+                                                {
+                                                    "value": "3",
+                                                    "children": [],
+                                                    "line_no": "12",
+                                                    "type": "int",
+                                                    "identificator": false,
+                                                    "val": 3
+                                                }
+                                            ],
+                                            "line_no": "12",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 8
+                                        },
+                                        {
+                                            "value": "/",
+                                            "children": [
+                                                {
+                                                    "value": "*",
+                                                    "children": [
+                                                        {
+                                                            "value": "2",
+                                                            "children": [],
+                                                            "line_no": "12",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 2
+                                                        },
+                                                        {
+                                                            "value": "4",
+                                                            "children": [],
+                                                            "line_no": "12",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 4
+                                                        }
+                                                    ],
+                                                    "line_no": "12",
+                                                    "type": "int",
+                                                    "identificator": false,
+                                                    "val": 8
+                                                },
+                                                {
+                                                    "value": "7",
+                                                    "children": [],
+                                                    "line_no": "12",
+                                                    "type": "int",
+                                                    "identificator": false,
+                                                    "val": 7
+                                                }
+                                            ],
+                                            "line_no": "12",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 1
+                                        }
+                                    ],
+                                    "line_no": "12",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 7
+                                },
+                                {
+                                    "value": "9",
+                                    "children": [],
+                                    "line_no": "12",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 9
+                                }
+                            ],
+                            "line_no": "12",
+                            "type": "int",
+                            "identificator": false,
+                            "val": -2
+                        }
+                    ],
+                    "line_no": "12",
+                    "type": "int",
+                    "identificator": false,
+                    "val": -2
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "z",
+                            "children": [],
+                            "line_no": "13",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "+",
+                            "children": [
+                                {
+                                    "value": "/",
+                                    "children": [
+                                        {
+                                            "value": "8",
+                                            "children": [],
+                                            "line_no": "13",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 8
+                                        },
+                                        {
+                                            "value": "2",
+                                            "children": [],
+                                            "line_no": "13",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 2
+                                        }
+                                    ],
+                                    "line_no": "13",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 4
+                                },
+                                {
+                                    "value": "*",
+                                    "children": [
+                                        {
+                                            "value": "15",
+                                            "children": [],
+                                            "line_no": "13",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 15
+                                        },
+                                        {
+                                            "value": "4",
+                                            "children": [],
+                                            "line_no": "13",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 4
+                                        }
+                                    ],
+                                    "line_no": "13",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 60
+                                }
+                            ],
+                            "line_no": "13",
+                            "type": "int",
+                            "identificator": false,
+                            "val": 64
+                        }
+                    ],
+                    "line_no": "13",
+                    "type": "int",
+                    "identificator": false,
+                    "val": 64
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "y",
+                            "children": [],
+                            "line_no": "14",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "14.54",
+                            "children": [],
+                            "line_no": "14",
+                            "type": "float",
+                            "identificator": false,
+                            "val": 14.54
+                        }
+                    ],
+                    "line_no": "14",
+                    "type": null,
+                    "identificator": false,
+                    "val": null
+                },
+                {
+                    "value": "SentenciaIf",
+                    "children": [
+                        {
+                            "value": ">",
+                            "children": [
+                                {
+                                    "value": "2",
+                                    "children": [],
+                                    "line_no": "15",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 2
+                                },
+                                {
+                                    "value": "3",
+                                    "children": [],
+                                    "line_no": "15",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 3
+                                }
+                            ],
+                            "line_no": "15",
+                            "type": "boolean",
+                            "identificator": false,
+                            "val": false
+                        },
+                        {
+                            "value": "Sentencias",
+                            "children": [
+                                {
+                                    "value": "Bloque",
+                                    "children": [
+                                        {
+                                            "value": "Sentencias",
+                                            "children": [
+                                                {
+                                                    "value": "Asignaci\u00f3n",
+                                                    "children": [
+                                                        {
+                                                            "value": "y",
+                                                            "children": [],
+                                                            "line_no": "16",
+                                                            "type": "int",
+                                                            "identificator": true,
+                                                            "val": null
+                                                        },
+                                                        {
+                                                            "value": "+",
+                                                            "children": [
+                                                                {
+                                                                    "value": "a",
+                                                                    "children": [],
+                                                                    "line_no": "16",
+                                                                    "type": "float",
+                                                                    "identificator": true,
+                                                                    "val": 61.0
+                                                                },
+                                                                {
+                                                                    "value": "3",
+                                                                    "children": [],
+                                                                    "line_no": "16",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 3
+                                                                }
+                                                            ],
+                                                            "line_no": "16",
+                                                            "type": "float",
+                                                            "identificator": false,
+                                                            "val": 64.0
+                                                        }
+                                                    ],
+                                                    "line_no": "16",
+                                                    "type": null,
+                                                    "identificator": false,
+                                                    "val": null
+                                                }
+                                            ],
+                                            "line_no": null,
+                                            "type": null,
+                                            "identificator": false,
+                                            "val": null
+                                        }
+                                    ],
+                                    "line_no": "15",
+                                    "type": null,
+                                    "identificator": false,
+                                    "val": null
+                                }
+                            ],
+                            "line_no": null,
+                            "type": null,
+                            "identificator": false,
+                            "val": null
+                        },
+                        {
+                            "value": "Sentencias",
+                            "children": [
+                                {
+                                    "value": "Bloque",
+                                    "children": [
+                                        {
+                                            "value": "Sentencias",
+                                            "children": [
+                                                {
+                                                    "value": "SentenciaIf",
+                                                    "children": [
+                                                        {
+                                                            "value": ">",
+                                                            "children": [
+                                                                {
+                                                                    "value": "4",
+                                                                    "children": [],
+                                                                    "line_no": "18",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 4
+                                                                },
+                                                                {
+                                                                    "value": "2",
+                                                                    "children": [],
+                                                                    "line_no": "18",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 2
+                                                                }
+                                                            ],
+                                                            "line_no": "18",
+                                                            "type": "boolean",
+                                                            "identificator": false,
+                                                            "val": true
+                                                        },
+                                                        {
+                                                            "value": "Sentencias",
+                                                            "children": [
+                                                                {
+                                                                    "value": "Bloque",
+                                                                    "children": [
+                                                                        {
+                                                                            "value": "Sentencias",
+                                                                            "children": [
+                                                                                {
+                                                                                    "value": "Asignaci\u00f3n",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "value": "b",
+                                                                                            "children": [],
+                                                                                            "line_no": "19",
+                                                                                            "type": "float",
+                                                                                            "identificator": true,
+                                                                                            "val": null
+                                                                                        },
+                                                                                        {
+                                                                                            "value": "3.2",
+                                                                                            "children": [],
+                                                                                            "line_no": "19",
+                                                                                            "type": "float",
+                                                                                            "identificator": false,
+                                                                                            "val": 3.2
+                                                                                        }
+                                                                                    ],
+                                                                                    "line_no": "19",
+                                                                                    "type": "float",
+                                                                                    "identificator": false,
+                                                                                    "val": 3.2
+                                                                                }
+                                                                            ],
+                                                                            "line_no": null,
+                                                                            "type": null,
+                                                                            "identificator": false,
+                                                                            "val": null
+                                                                        }
+                                                                    ],
+                                                                    "line_no": "18",
+                                                                    "type": null,
+                                                                    "identificator": false,
+                                                                    "val": null
+                                                                }
+                                                            ],
+                                                            "line_no": null,
+                                                            "type": null,
+                                                            "identificator": false,
+                                                            "val": null
+                                                        },
+                                                        {
+                                                            "value": "Sentencias",
+                                                            "children": [
+                                                                {
+                                                                    "value": "Bloque",
+                                                                    "children": [
+                                                                        {
+                                                                            "value": "Sentencias",
+                                                                            "children": [
+                                                                                {
+                                                                                    "value": "Asignaci\u00f3n",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "value": "b",
+                                                                                            "children": [],
+                                                                                            "line_no": "21",
+                                                                                            "type": "float",
+                                                                                            "identificator": true,
+                                                                                            "val": null
+                                                                                        },
+                                                                                        {
+                                                                                            "value": "5.0",
+                                                                                            "children": [],
+                                                                                            "line_no": "21",
+                                                                                            "type": "float",
+                                                                                            "identificator": false,
+                                                                                            "val": 5.0
+                                                                                        }
+                                                                                    ],
+                                                                                    "line_no": "21",
+                                                                                    "type": "float",
+                                                                                    "identificator": false,
+                                                                                    "val": 5.0
+                                                                                }
+                                                                            ],
+                                                                            "line_no": null,
+                                                                            "type": null,
+                                                                            "identificator": false,
+                                                                            "val": null
+                                                                        }
+                                                                    ],
+                                                                    "line_no": "20",
+                                                                    "type": null,
+                                                                    "identificator": false,
+                                                                    "val": null
+                                                                }
+                                                            ],
+                                                            "line_no": null,
+                                                            "type": null,
+                                                            "identificator": false,
+                                                            "val": null
+                                                        }
+                                                    ],
+                                                    "line_no": "18",
+                                                    "type": null,
+                                                    "identificator": false,
+                                                    "val": true
+                                                },
+                                                {
+                                                    "value": "Asignaci\u00f3n",
+                                                    "children": [
+                                                        {
+                                                            "value": "y",
+                                                            "children": [],
+                                                            "line_no": "23",
+                                                            "type": "int",
+                                                            "identificator": true,
+                                                            "val": null
+                                                        },
+                                                        {
+                                                            "value": "+",
+                                                            "children": [
+                                                                {
+                                                                    "value": "y",
+                                                                    "children": [],
+                                                                    "line_no": "23",
+                                                                    "type": "int",
+                                                                    "identificator": true,
+                                                                    "val": -2
+                                                                },
+                                                                {
+                                                                    "value": "1",
+                                                                    "children": [],
+                                                                    "line_no": "23",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 1
+                                                                }
+                                                            ],
+                                                            "line_no": "23",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": -1
+                                                        }
+                                                    ],
+                                                    "line_no": "23",
+                                                    "type": "int",
+                                                    "identificator": false,
+                                                    "val": -1
+                                                }
+                                            ],
+                                            "line_no": null,
+                                            "type": null,
+                                            "identificator": false,
+                                            "val": null
+                                        }
+                                    ],
+                                    "line_no": "17",
+                                    "type": null,
+                                    "identificator": false,
+                                    "val": null
+                                }
+                            ],
+                            "line_no": null,
+                            "type": null,
+                            "identificator": false,
+                            "val": null
+                        }
+                    ],
+                    "line_no": "15",
+                    "type": null,
+                    "identificator": false,
+                    "val": false
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "a",
+                            "children": [],
+                            "line_no": "25",
+                            "type": "float",
+                            "identificator": true,
+                            "val": 61.0
+                        },
+                        {
+                            "value": "+",
+                            "children": [
+                                {
+                                    "value": "a",
+                                    "children": [],
+                                    "line_no": "25",
+                                    "type": "float",
+                                    "identificator": true,
+                                    "val": 61.0
+                                },
+                                {
+                                    "value": "1",
+                                    "children": [],
+                                    "line_no": null,
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 1
+                                }
+                            ],
+                            "line_no": null,
+                            "type": "float",
+                            "identificator": false,
+                            "val": 62.0
+                        }
+                    ],
+                    "line_no": "25",
+                    "type": "float",
+                    "identificator": false,
+                    "val": 62.0
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "c",
+                            "children": [],
+                            "line_no": "26",
+                            "type": "float",
+                            "identificator": true,
+                            "val": 0
+                        },
+                        {
+                            "value": "-",
+                            "children": [
+                                {
+                                    "value": "c",
+                                    "children": [],
+                                    "line_no": "26",
+                                    "type": "float",
+                                    "identificator": true,
+                                    "val": 0
+                                },
+                                {
+                                    "value": "1",
+                                    "children": [],
+                                    "line_no": null,
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 1
+                                }
+                            ],
+                            "line_no": null,
+                            "type": "float",
+                            "identificator": false,
+                            "val": -1
+                        }
+                    ],
+                    "line_no": "26",
+                    "type": "float",
+                    "identificator": false,
+                    "val": -1
+                },
+                {
+                    "value": "Asignaci\u00f3n",
+                    "children": [
+                        {
+                            "value": "x",
+                            "children": [],
+                            "line_no": "27",
+                            "type": "int",
+                            "identificator": true,
+                            "val": null
+                        },
+                        {
+                            "value": "+",
+                            "children": [
+                                {
+                                    "value": "3",
+                                    "children": [],
+                                    "line_no": "27",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 3
+                                },
+                                {
+                                    "value": "4",
+                                    "children": [],
+                                    "line_no": "27",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 4
+                                }
+                            ],
+                            "line_no": "27",
+                            "type": "int",
+                            "identificator": false,
+                            "val": 7
+                        }
+                    ],
+                    "line_no": "27",
+                    "type": "int",
+                    "identificator": false,
+                    "val": 7
+                },
+                {
+                    "value": "SentenciaDo",
+                    "children": [
+                        {
+                            "value": "Bloque",
+                            "children": [
+                                {
+                                    "value": "Sentencias",
+                                    "children": [
+                                        {
+                                            "value": "Asignaci\u00f3n",
+                                            "children": [
+                                                {
+                                                    "value": "y",
+                                                    "children": [],
+                                                    "line_no": "29",
+                                                    "type": "int",
+                                                    "identificator": true,
+                                                    "val": null
+                                                },
+                                                {
+                                                    "value": "+",
+                                                    "children": [
+                                                        {
+                                                            "value": "*",
+                                                            "children": [
+                                                                {
+                                                                    "value": "+",
+                                                                    "children": [
+                                                                        {
+                                                                            "value": "y",
+                                                                            "children": [],
+                                                                            "line_no": "29",
+                                                                            "type": "int",
+                                                                            "identificator": true,
+                                                                            "val": -1
+                                                                        },
+                                                                        {
+                                                                            "value": "1",
+                                                                            "children": [],
+                                                                            "line_no": "29",
+                                                                            "type": "int",
+                                                                            "identificator": false,
+                                                                            "val": 1
+                                                                        }
+                                                                    ],
+                                                                    "line_no": "29",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 0
+                                                                },
+                                                                {
+                                                                    "value": "2",
+                                                                    "children": [],
+                                                                    "line_no": "29",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 2
+                                                                }
+                                                            ],
+                                                            "line_no": "29",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 0
+                                                        },
+                                                        {
+                                                            "value": "1",
+                                                            "children": [],
+                                                            "line_no": "29",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 1
+                                                        }
+                                                    ],
+                                                    "line_no": "29",
+                                                    "type": "int",
+                                                    "identificator": false,
+                                                    "val": 1
+                                                }
+                                            ],
+                                            "line_no": "29",
+                                            "type": "int",
+                                            "identificator": false,
+                                            "val": 1
+                                        },
+                                        {
+                                            "value": "SentenciaWhile",
+                                            "children": [
+                                                {
+                                                    "value": ">",
+                                                    "children": [
+                                                        {
+                                                            "value": "x",
+                                                            "children": [],
+                                                            "line_no": "30",
+                                                            "type": "int",
+                                                            "identificator": true,
+                                                            "val": 6
+                                                        },
+                                                        {
+                                                            "value": "7",
+                                                            "children": [],
+                                                            "line_no": "30",
+                                                            "type": "int",
+                                                            "identificator": false,
+                                                            "val": 7
+                                                        }
+                                                    ],
+                                                    "line_no": "30",
+                                                    "type": "boolean",
+                                                    "identificator": false,
+                                                    "val": false
+                                                },
+                                                {
+                                                    "value": "Bloque",
+                                                    "children": [
+                                                        {
+                                                            "value": "Sentencias",
+                                                            "children": [
+                                                                {
+                                                                    "value": "Asignaci\u00f3n",
+                                                                    "children": [
+                                                                        {
+                                                                            "value": "x",
+                                                                            "children": [],
+                                                                            "line_no": "31",
+                                                                            "type": "int",
+                                                                            "identificator": true,
+                                                                            "val": null
+                                                                        },
+                                                                        {
+                                                                            "value": "+",
+                                                                            "children": [
+                                                                                {
+                                                                                    "value": "6",
+                                                                                    "children": [],
+                                                                                    "line_no": "31",
+                                                                                    "type": "int",
+                                                                                    "identificator": false,
+                                                                                    "val": 6
+                                                                                },
+                                                                                {
+                                                                                    "value": "/",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "value": "*",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "value": "/",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "value": "8",
+                                                                                                            "children": [],
+                                                                                                            "line_no": "31",
+                                                                                                            "type": "int",
+                                                                                                            "identificator": false,
+                                                                                                            "val": 8
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "value": "9",
+                                                                                                            "children": [],
+                                                                                                            "line_no": "31",
+                                                                                                            "type": "int",
+                                                                                                            "identificator": false,
+                                                                                                            "val": 9
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "line_no": "31",
+                                                                                                    "type": "int",
+                                                                                                    "identificator": false,
+                                                                                                    "val": 0
+                                                                                                },
+                                                                                                {
+                                                                                                    "value": "8",
+                                                                                                    "children": [],
+                                                                                                    "line_no": "31",
+                                                                                                    "type": "int",
+                                                                                                    "identificator": false,
+                                                                                                    "val": 8
+                                                                                                }
+                                                                                            ],
+                                                                                            "line_no": "31",
+                                                                                            "type": "int",
+                                                                                            "identificator": false,
+                                                                                            "val": 0
+                                                                                        },
+                                                                                        {
+                                                                                            "value": "3",
+                                                                                            "children": [],
+                                                                                            "line_no": "31",
+                                                                                            "type": "int",
+                                                                                            "identificator": false,
+                                                                                            "val": 3
+                                                                                        }
+                                                                                    ],
+                                                                                    "line_no": "31",
+                                                                                    "type": "int",
+                                                                                    "identificator": false,
+                                                                                    "val": 0
+                                                                                }
+                                                                            ],
+                                                                            "line_no": "31",
+                                                                            "type": "int",
+                                                                            "identificator": false,
+                                                                            "val": 6
+                                                                        }
+                                                                    ],
+                                                                    "line_no": "31",
+                                                                    "type": "int",
+                                                                    "identificator": false,
+                                                                    "val": 6
+                                                                },
+                                                                {
+                                                                    "value": "SentenciaInput",
+                                                                    "children": [
+                                                                        {
+                                                                            "value": "IdList",
+                                                                            "children": [
+                                                                                {
+                                                                                    "value": "x",
+                                                                                    "children": [],
+                                                                                    "line_no": "32",
+                                                                                    "type": null,
+                                                                                    "identificator": false,
+                                                                                    "val": null
+                                                                                }
+                                                                            ],
+                                                                            "line_no": null,
+                                                                            "type": null,
+                                                                            "identificator": false,
+                                                                            "val": null
+                                                                        }
+                                                                    ],
+                                                                    "line_no": "32",
+                                                                    "type": null,
+                                                                    "identificator": false,
+                                                                    "val": null
+                                                                },
+                                                                {
+                                                                    "value": "Asignaci\u00f3n",
+                                                                    "children": [
+                                                                        {
+                                                                            "value": "mas",
+                                                                            "children": [],
+                                                                            "line_no": "33",
+                                                                            "type": null,
+                                                                            "identificator": true,
+                                                                            "val": null
+                                                                        },
+                                                                        {
+                                                                            "value": "/",
+                                                                            "children": [
+                                                                                {
+                                                                                    "value": "36",
+                                                                                    "children": [],
+                                                                                    "line_no": "33",
+                                                                                    "type": null,
+                                                                                    "identificator": false,
+                                                                                    "val": null
+                                                                                },
+                                                                                {
+                                                                                    "value": "7",
+                                                                                    "children": [],
+                                                                                    "line_no": "33",
+                                                                                    "type": null,
+                                                                                    "identificator": false,
+                                                                                    "val": null
+                                                                                }
+                                                                            ],
+                                                                            "line_no": "33",
+                                                                            "type": null,
+                                                                            "identificator": false,
+                                                                            "val": null
+                                                                        }
+                                                                    ],
+                                                                    "line_no": "33",
+                                                                    "type": null,
+                                                                    "identificator": false,
+                                                                    "val": null
+                                                                }
+                                                            ],
+                                                            "line_no": null,
+                                                            "type": null,
+                                                            "identificator": false,
+                                                            "val": null
+                                                        }
+                                                    ],
+                                                    "line_no": "30",
+                                                    "type": null,
+                                                    "identificator": false,
+                                                    "val": null
+                                                }
+                                            ],
+                                            "line_no": "30",
+                                            "type": null,
+                                            "identificator": false,
+                                            "val": false
+                                        }
+                                    ],
+                                    "line_no": null,
+                                    "type": null,
+                                    "identificator": false,
+                                    "val": null
+                                }
+                            ],
+                            "line_no": "28",
+                            "type": null,
+                            "identificator": false,
+                            "val": null
+                        },
+                        {
+                            "value": "==",
+                            "children": [
+                                {
+                                    "value": "y",
+                                    "children": [],
+                                    "line_no": "35",
+                                    "type": "int",
+                                    "identificator": true,
+                                    "val": 1
+                                },
+                                {
+                                    "value": "5",
+                                    "children": [],
+                                    "line_no": "35",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 5
+                                }
+                            ],
+                            "line_no": "35",
+                            "type": "boolean",
+                            "identificator": false,
+                            "val": false
+                        }
+                    ],
+                    "line_no": null,
+                    "type": null,
+                    "identificator": false,
+                    "val": false
+                },
+                {
+                    "value": "SentenciaWhile",
+                    "children": [
+                        {
+                            "value": "==",
+                            "children": [
+                                {
+                                    "value": "y",
+                                    "children": [],
+                                    "line_no": "36",
+                                    "type": "int",
+                                    "identificator": true,
+                                    "val": 1
+                                },
+                                {
+                                    "value": "0",
+                                    "children": [],
+                                    "line_no": "36",
+                                    "type": "int",
+                                    "identificator": false,
+                                    "val": 0
+                                }
+                            ],
+                            "line_no": "36",
+                            "type": "boolean",
+                            "identificator": false,
+                            "val": false
+                        },
+                        {
+                            "value": "Bloque",
+                            "children": [
+                                {
+                                    "value": "Sentencias",
+                                    "children": [
+                                        {
+                                            "value": "SentenciaInput",
+                                            "children": [
+                                                {
+                                                    "value": "IdList",
+                                                    "children": [
+                                                        {
+                                                            "value": "mas",
+                                                            "children": [],
+                                                            "line_no": "37",
+                                                            "type": null,
+                                                            "identificator": false,
+                                                            "val": null
+                                                        }
+                                                    ],
+                                                    "line_no": null,
+                                                    "type": null,
+                                                    "identificator": false,
+                                                    "val": null
+                                                }
+                                            ],
+                                            "line_no": "37",
+                                            "type": null,
+                                            "identificator": false,
+                                            "val": null
+                                        },
+                                        {
+                                            "value": "SentenciaOutput",
+                                            "children": [
+                                                {
+                                                    "value": "x",
+                                                    "children": [],
+                                                    "line_no": "38",
+                                                    "type": "int",
+                                                    "identificator": true,
+                                                    "val": 6
+                                                }
+                                            ],
+                                            "line_no": "38",
+                                            "type": null,
+                                            "identificator": false,
+                                            "val": 6
+                                        }
+                                    ],
+                                    "line_no": null,
+                                    "type": null,
+                                    "identificator": false,
+                                    "val": null
+                                }
+                            ],
+                            "line_no": "36",
+                            "type": null,
+                            "identificator": false,
+                            "val": null
+                        }
+                    ],
+                    "line_no": "36",
+                    "type": null,
+                    "identificator": false,
+                    "val": false
+                }
+            ],
+            "line_no": null,
+            "type": null,
+            "identificator": false,
+            "val": null
+        }
+    ],
+    "line_no": null,
+    "type": null,
+    "identificator": false,
+    "val": null
+}
