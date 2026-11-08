@@ -180,7 +180,7 @@ class Parser:
         if self.current_token and self.current_token.token_type != "{":
             aux = Node("Error")
             error_token = self.current_token.value if self.current_token else None
-            self.errors.append("Expected '{', found '",error_token,"', linea ",self.current_token.line)
+            self.errors.append("Expected '{', found '"+error_token+"', linea "+self.current_token.line)
             root.add_child(aux)
         self.match("{")
         # print("Entramos en el DO")
@@ -486,7 +486,7 @@ class Parser:
         root = self.relational_expr()
         if root.value == "Error":
             return root
-        while self.current_token and self.current_token.token_type in ["+", "-"]:
+        while self.current_token and self.current_token.token_type in ["+", "-", "&&", "||"]:
             op_node = Node(self.current_token.value)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
@@ -504,7 +504,7 @@ class Parser:
         root = self.term()
         if root.value == "Error":
             return root
-        while self.current_token and self.current_token.token_type in ["<", ">", "<=", ">=", "==", "!=", "&&", "||"]:
+        while self.current_token and self.current_token.token_type in ["<", ">", "<=", ">=", "==", "!="]:
             op_node = Node(self.current_token.value)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
@@ -515,23 +515,37 @@ class Parser:
             root = op_node
         # print("Sale relational_expr")
         return root
-
-
+    
     def term(self):
-        # print("Entra term")
-        root = self.factor()
+        # Maneja *, /, y % con la jerarquía adecuada
+        root = self.power()  # Primero resuelve potencias
         if root.value == "Error":
             return root
         while self.current_token and self.current_token.token_type in ["*", "/", "%"]:
             op_node = Node(self.current_token.value)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
-            aux = self.factor() 
+            aux = self.power()  # Resuelve operandos considerando potencias primero
             if aux.value == "Error":
                 return aux
             op_node.add_child(aux)
             root = op_node
-        # print("Sale term")
+        return root
+
+    def power(self):
+        # Maneja exclusivamente la potencia ^
+        root = self.factor()
+        if root.value == "Error":
+            return root
+        while self.current_token and self.current_token.token_type == "^":
+            op_node = Node(self.current_token.value)
+            self.match(self.current_token.token_type)
+            op_node.add_child(root)
+            aux = self.factor()  # Resuelve el siguiente operando
+            if aux.value == "Error":
+                return aux
+            op_node.add_child(aux)
+            root = op_node
         return root
 
     def factor(self):
@@ -560,7 +574,7 @@ class Parser:
                 value_node = Node(value)
                 root = value_node
             self.match(self.current_token.token_type)
-            if self.current_token and self.current_token.token_type not in ["(", ")", ";", "*", "/", "%", "<", ">", "<=", ">=", "==", "!=", "&&", "||", "+", "-"]:
+            if self.current_token and self.current_token.token_type not in ["(", ")", ";", "*", "/", "^", "%", "<", ">", "<=", ">=", "==", "!=", "&&", "||", "+", "-"]:
                 root = Node("Error")
                 error_token = self.current_token.value if self.current_token else None
                 self.errors.append(f"Expected 'operador', ')' or ';', found '{error_token}', linea {self.current_token.line}")

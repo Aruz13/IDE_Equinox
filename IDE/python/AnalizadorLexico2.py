@@ -48,6 +48,7 @@ operadores_aritmeticos = {
     "*": "MULTIPLICACION",
     "/": "DIVISION",
     "=": "IGUALACION",
+    "^": "POTENCIA",
     "%": "PORCENTAJE",
 }
 operadores_relacionales = {

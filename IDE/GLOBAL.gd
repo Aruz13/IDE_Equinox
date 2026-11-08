@@ -7,6 +7,7 @@ var docRuta = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
 var analizaLex = docRuta+"/python/AnalizadorLexico.py"
 var analizaSint = docRuta+"/python/SintAn.py"
 var analizaSeman = docRuta+"/python/SemaAn.py"
+var codeP = docRuta+"/python/codeP.py"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	leerVariables()
@@ -41,7 +42,8 @@ func guardarRutaPython():
 func crearArchivosPy():
 	var file = FileAccess.open("res://python/AnalizadorLexico2.py", FileAccess.READ)
 	var file1 = FileAccess.open("res://python/SintAn2v5.py", FileAccess.READ)
-	var file2 = FileAccess.open("res://python/SemaAn2.py", FileAccess.READ)
+	var file2 = FileAccess.open("res://python/SemaAn2v3.py", FileAccess.READ)
+	var file3 = FileAccess.open("res://python/codePv3.py", FileAccess.READ)
 	if file:
 		print("Encuentra el archivo")
 		var AnalizadorLexico = file.get_as_text()
@@ -81,4 +83,16 @@ func crearArchivosPy():
 	else:
 		print("No lee unu Sema")
 	
-
+	if file3:
+		print("Encuentra el archivo")
+		var codeP = file3.get_as_text()
+		var directorio = DirAccess.make_dir_absolute(docRuta+"/python")
+		file = FileAccess.open(docRuta+"/python/codeP.py", FileAccess.WRITE)
+		if file:
+			print("Crea el archivo codeP")
+			file.store_string(codeP)
+		else:
+			print("No creo el archivo codeP")
+	else:
+		print("No lee unu codeP")
+	

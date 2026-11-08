@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfok3u6m8kmt2"]
+[gd_scene load_steps=12 format=3 uid="uid://cfok3u6m8kmt2"]
 
 [ext_resource type="Script" path="res://control2.gd" id="1_l3lw0"]
 [ext_resource type="Texture2D" uid="uid://h1k01yg23b1p" path="res://images/new.png" id="2_fva7d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dlc844hrj6bda" path="res://images/play.png" id="6_insyo"]
 [ext_resource type="CodeHighlighter" uid="uid://b083jk2bygk33" path="res://CodeHighPastel.tres" id="8_64crh"]
 [ext_resource type="FontFile" uid="uid://cd4n7c3kq0dwm" path="res://classic_console_neue/clacon2.ttf" id="9_of4nt"]
+[ext_resource type="Script" path="res://MaquinaVirual.gd" id="10_532qd"]
 
 [sub_resource type="Theme" id="Theme_omhid"]
 CodeEdit/colors/word_highlighted_color = Color(0.784314, 0.270588, 1, 0.658824)
@@ -98,16 +99,23 @@ icon = ExtResource("6_insyo")
 expand_icon = true
 
 [node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Lexico"
 
 [node name="Button7" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Sintaxis"
 
 [node name="Button8" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Semantica"
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Modo paso a paso"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -200,10 +208,12 @@ visible = false
 layout_mode = 2
 text = "1"
 editable = false
+metadata/_tab_index = 0
 
 [node name="Sintactico" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Sintactico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico"]
 custom_minimum_size = Vector2(0, 40)
@@ -215,10 +225,10 @@ editable = false
 [node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Sintactico"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 4
 
 [node name="Semantico" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="Semantico" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Semantico"]
 custom_minimum_size = Vector2(0, 40)
@@ -230,13 +240,14 @@ editable = false
 [node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Semantico"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 4
 
-[node name="Codigo intermedio" type="TextEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
+[node name="Codigo intermedio" type="CodeEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2"]
 visible = false
 layout_mode = 2
 text = "4"
 editable = false
+gutters_draw_line_numbers = true
+metadata/_tab_index = 3
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VSplitContainer"]
 layout_mode = 2
@@ -245,38 +256,69 @@ size_flags_vertical = 3
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 3
+current_tab = 4
 
 [node name="Errores Lexicos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_readonly_color = Color(0.937255, 0, 0, 1)
 editable = false
+metadata/_tab_index = 0
 
 [node name="Errores Sintacticos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
 visible = false
 layout_mode = 2
 text = "2"
 editable = false
+metadata/_tab_index = 1
 
 [node name="Errores Semanticos" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
 visible = false
 layout_mode = 2
 text = "3"
 editable = false
+metadata/_tab_index = 2
 
 [node name="Hash Table" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_of4nt")
 theme_override_font_sizes/font_size = 16
 text = "4"
 editable = false
+metadata/_tab_index = 3
 
-[node name="Resultados" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
-visible = false
+[node name="Resultados" type="PanelContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer"]
 layout_mode = 2
+script = ExtResource("10_532qd")
+metadata/_tab_index = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados"]
+layout_mode = 2
+
+[node name="Resultados" type="TextEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 text = "4"
 editable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="labInput" type="Label" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+text = "Ingresar Variable:"
+
+[node name="input" type="LineEdit" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Timer" type="Timer" parent="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados"]
+wait_time = 0.1
+one_shot = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
@@ -343,8 +385,10 @@ one_shot = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button6" to="." method="_on_button_6_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button7" to="." method="_on_button_7_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button8" to="." method="_on_button_8_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="caret_changed" from="VBoxContainer/VSplitContainer/HSplitContainer/CodeEdit" to="." method="_on_code_edit_caret_changed"]
 [connection signal="text_changed" from="VBoxContainer/VSplitContainer/HSplitContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]
+[connection signal="timeout" from="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados/Timer" to="VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados" method="_on_timer_timeout"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

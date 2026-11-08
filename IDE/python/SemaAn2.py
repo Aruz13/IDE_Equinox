@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pathlib import Path
 import json
 import sys
 
@@ -499,6 +500,9 @@ class SymbolTable:
             left_value = self.evaluate_expression(node.children[0])
             right_value = self.evaluate_expression(node.children[1])
             if left_value is None or right_value is None:
+                print(f"Error linea {node.line_no}: Comparacion con elementos nula.")
+                errores_semantico.append(f"Error linea {node.line_no}: Comparacion con elementos nula.")
+                return
                 raise ValueError(f"Error in expression at line {node.line_no}")
 
             #if type(left_value) != type(right_value):
@@ -716,8 +720,19 @@ def serialize_node(node):
     return node_dict
 
 serialized_tree = serialize_node(root_node)
-	
-with open('arbol_sintactico.json', 'w') as file:
+
+# Para Windows
+documents_folder = Path.home() / 'Documents'
+
+# Para Unix/Linux/Mac
+# documents_folder = Path.home() / 'Documents'
+
+#print("Carpeta de Documentos:", documents_folder)
+# Crear la ruta completa del archivo
+file_path = documents_folder / 'python' / 'arbol_sintactico.json'
+
+# Asegúrate de convertir el objeto Path a string cuando lo uses
+with open(str(file_path), 'w') as file:
     json.dump(serialized_tree, file, indent=4)
 
 # print_ast(ast)

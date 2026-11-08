@@ -29,13 +29,14 @@ var seleccion = false
 @onready var tree2 = $VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Semantico/Tree
 @onready var fontSi = $VBoxContainer/HBoxContainer2/HBoxContainer/SpinBox
 @onready var tabla = $"VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Hash Table"
+@onready var codePtable = $"VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Codigo intermedio"
 @onready var time = $Timer
 var viewport
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(OS.get_name())
-	print(OS.get_distribution_name())
+	#print(OS.get_name())
+	#print(OS.get_distribution_name())
 	
 	fontSi.value = code.get_theme_font_size("font_size")
 	viewport = get_viewport()
@@ -85,10 +86,25 @@ func size_changed():
 	size = get_viewport().size
 	$VBoxContainer.size = size
 	
+func maquinaVirtual():
+	pass
+
+
 
 func _on_button_5_pressed():
 	archivo = 0
-	_on_button_8_pressed()
+	if (_codigo_intermedio()):
+		$VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer.current_tab = 4
+		var  elemento = $VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados/VBoxContainer/Resultados
+		elemento.text = ""
+		var auxText = $"VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2/Codigo intermedio".text
+		$VBoxContainer/HBoxContainer/Button5.disabled = true
+		await $VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados.execute_intermediate_code(auxText)
+		$VBoxContainer/HBoxContainer/Button5.disabled = false
+		
+		
+		#for line in auxText:
+			#elemento.text += line + "\n"
 	#if code.text != "":
 	#	_on_button_2_pressed()
 	#	ejecutar_Python()
@@ -126,7 +142,7 @@ func ejecutar_Python():
 
 # Guardar
 func _on_button_2_pressed() -> bool:
-	print("Funcion boton")
+	#print("Funcion boton")
 	archivo = 0
 	if ruta_del_archivo[0] == "":
 		file_dialog.file_mode = 4
@@ -144,7 +160,7 @@ func _on_button_2_pressed() -> bool:
 		return true
 
 func accionar_ejecucion() -> bool:
-	print("Funcion Otra")
+	#print("Funcion Otra")
 	if code.text != "":
 		if ruta_del_archivo[archivo] == "":
 			file_dialog.file_mode = 4
@@ -199,6 +215,7 @@ func _on_button_4_pressed():
 		ruta_del_archivo[0] = ""
 
 func _on_code_edit_text_changed():
+	time.stop()
 	guardado = false
 	archivo = 1
 	time.start(0.5)
@@ -239,7 +256,7 @@ func _on_button_6_pressed() -> bool:
 		var ruta_completa = ProjectSettings.globalize_path(aux1)
 		# print(ruta_completa)
 		OS.execute(pythonRuta,[Global.analizaLex,"-f",ruta_del_archivo[archivo]], output,true)
-		print(output[output.size()-1])
+		#print(output[output.size()-1])
 		
 		var aux = "Python was not found"
 		var aux2 = "No se encontró Python"
@@ -290,7 +307,7 @@ func _on_button_7_pressed() -> bool:
 		var aux1 = "res://python/analizadorsintactico.py"
 		# print(ruta_completa)
 		OS.execute(pythonRuta,[Global.analizaSint,ruta_Tokens], output,true)
-		print(output[output.size()-1])
+		#print(output[output.size()-1])
 		
 		var aux = "Python was not found"
 		if !output[output.size()-1].contains(aux):
@@ -386,7 +403,7 @@ func _on_button_8_pressed() -> bool:
 		var aux1 = "res://python/analizadorsintactico.py"
 		# print(ruta_completa)
 		OS.execute(pythonRuta,[Global.analizaSeman,ruta_Tokens], output,true)
-		print(output[output.size()-1])
+		#print(output[output.size()-1])
 		
 		var aux = "Python was not found"
 		if !output[output.size()-1].contains(aux):
@@ -450,6 +467,7 @@ func _on_button_8_pressed() -> bool:
 					previous_level = level
 			var errores
 			var texto = output[output.size()-1]
+			print(texto)
 			var divi = texto.rsplit("=-=> Arbol Anotaciones <=-=", true, 1)
 			var file = FileAccess.open((Global.analizaLex.get_base_dir()+"/ErroresSema.txt"), FileAccess.WRITE)
 			if file:
@@ -461,9 +479,18 @@ func _on_button_8_pressed() -> bool:
 			if file:
 				file.store_string(divi[0])
 			file = FileAccess.open((Global.analizaLex.get_base_dir()+"/TablaSimbolos.txt"), FileAccess.WRITE)
+			
 			if file:
 				file.store_string(divi[1])
 				tabla.text = divi[1]
+			
+			
+			#file = FileAccess.open((Global.analizaLex.get_base_dir()+"/JSON.json"), FileAccess.WRITE)
+			#if file:
+				#file.store_string(divi[1])
+				#tabla.text = divi[1]
+				#
+			# "=-=> JSON <=-="
 			if errores.contains("Error"):
 				var lineas = errores.split("\n")
 				for linea in lineas:
@@ -471,7 +498,7 @@ func _on_button_8_pressed() -> bool:
 						var split = linea.split(":")
 						split = split[0].rsplit("linea")
 						code.set_line_background_color((int(split[1])-1), Color(0.38, 0.235, 0.239, 0.898))
-			
+				return false
 			
 		else:
 			return false
@@ -479,13 +506,34 @@ func _on_button_8_pressed() -> bool:
 	else:
 		return false
 
+func _codigo_intermedio() -> bool:
+	if(_on_button_8_pressed()):
+		
+		OS.execute(pythonRuta,[Global.codeP], output,true)
+		print(output[output.size()-1])
+		
+		var aux = "Python was not found"
+		if !output[output.size()-1].contains(aux):
+			$VBoxContainer/VSplitContainer/HSplitContainer/TabContainer2.current_tab = 3
+			
+			codePtable.text = output[output.size()-1]
+			
+		
+		return true
+	else:
+		return false
+	return true
 
 func _on_timer_timeout():
-	print(archivo)
+	#print(archivo)
 	for i in code.get_line_count():
 		code.set_line_background_color(i, Color.TRANSPARENT)
-	_on_button_8_pressed()
+	_codigo_intermedio()
 
 
 func _on_code_edit_caret_changed():
 	countLnCol.text = str("Ln ",(code.get_caret_line()+1),", Col ",(code.get_caret_column()+1))
+
+
+func _on_check_button_toggled(toggled_on):
+	$VBoxContainer/VSplitContainer/HBoxContainer3/TabContainer/Resultados.pasoXpaso = toggled_on
